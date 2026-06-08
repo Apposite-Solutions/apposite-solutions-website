@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Switched the site from a light to a dark color theme (charcoal background,
+  off-white text) with a bolder, more saturated accent (vivid azure→cyan→violet
+  range) for stronger visual impact and reduced eye strain. Per-load accent
+  randomization ranges were retuned to stay vivid and legible against the dark
+  background.
+
 ### Added
 - Single-page animated landing site (`index.html`) with embedded brand SVG logo,
   full brand content (mission, vision, differentiators, services, values, fit

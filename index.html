@@ -7,14 +7,17 @@
 <meta name="description" content="Apposite Solutions is an engineering firm that delivers managed IT, cloud, and security through forward-deployed engineers — for trades businesses, associations, and SMBs underserved by traditional MSPs." />
 <style>
   :root{
-    --ink: #16181b;
-    --paper: #f7f6f3;
-    --paper-dim: #efeee9;
-    --line: rgba(22,24,27,0.12);
-    --line-strong: rgba(22,24,27,0.22);
-    --accent-h: 210;
-    --accent-s: 18%;
-    --accent-l: 42%;
+    --ink: #eef1f4;
+    --paper: #0e1013;
+    --paper-dim: #15181c;
+    --surface: #181c21;
+    --line: rgba(255,255,255,0.09);
+    --line-strong: rgba(255,255,255,0.18);
+    --muted: hsl(220 12% 68%);
+    --muted-dim: hsl(220 10% 56%);
+    --accent-h: 206;
+    --accent-s: 78%;
+    --accent-l: 62%;
     --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
     --accent-soft: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.14);
     --accent-line: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.35);
@@ -96,7 +99,7 @@
     top:0;
     z-index:50;
     backdrop-filter: saturate(140%) blur(10px);
-    background: hsl(40 20% 96% / 0.72);
+    background: hsl(220 18% 9% / 0.72);
     border-bottom:1px solid var(--line);
   }
   .nav{
@@ -160,7 +163,7 @@
     background:var(--ink);
     color:var(--paper);
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px -10px rgba(0,0,0,.35);
+    box-shadow: 0 10px 28px -8px rgba(0,0,0,.55), 0 0 0 1px var(--accent-line);
   }
   .cta-btn .dot{
     width:7px; height:7px; border-radius:50%;
@@ -217,7 +220,7 @@
     margin-top:1.6rem;
     font-size: clamp(1.05rem, 2vw, 1.25rem);
     max-width: 56ch;
-    color: hsl(220 8% 28%);
+    color: var(--muted);
   }
   .hero-actions{
     margin-top:2.4rem;
@@ -255,7 +258,7 @@
   }
   .lead-text{
     margin-top:0.9rem;
-    color: hsl(220 8% 30%);
+    color: var(--muted);
     font-size:1.05rem;
     max-width: 64ch;
   }
@@ -278,7 +281,7 @@
     border:1px solid var(--line);
     border-radius:14px;
     padding:1.6rem;
-    background: hsl(40 24% 98% / 0.6);
+    background: hsl(220 16% 12% / 0.55);
     transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
     position:relative;
     overflow:hidden;
@@ -294,8 +297,8 @@
   .card:hover{
     transform: translateY(-5px);
     border-color: var(--accent-line);
-    box-shadow: 0 22px 48px -28px rgba(20,22,26,.45);
-    background: hsl(40 24% 99% / 0.85);
+    box-shadow: 0 24px 56px -26px rgba(0,0,0,.6);
+    background: hsl(220 16% 14% / 0.8);
   }
   .card:hover::before{ opacity:1; }
   .card h3{
@@ -306,7 +309,7 @@
   }
   .card p{
     font-size:0.95rem;
-    color: hsl(220 8% 32%);
+    color: var(--muted);
     position:relative;
   }
   .card .num{
@@ -334,7 +337,7 @@
   }
   .value:hover{ background: var(--accent-soft); }
   .value h3{ font-size:1rem; font-weight:700; margin-bottom:0.4rem; }
-  .value p{ font-size:0.92rem; color:hsl(220 8% 32%); }
+  .value p{ font-size:0.92rem; color:var(--muted); }
 
   /* fit / not-fit columns */
   .fit-grid{
@@ -348,10 +351,10 @@
     border-radius:14px;
     padding:1.8rem;
   }
-  .fit-card.muted{ background: hsl(40 14% 95%); border-style:dashed; }
+  .fit-card.muted{ background: hsl(220 16% 13%); border-style:dashed; }
   .fit-card h3{ font-size:1rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1rem; color:var(--accent); }
   .fit-card ul{ list-style:none; display:grid; gap:0.6rem; }
-  .fit-card li{ font-size:0.96rem; padding-left:1.3rem; position:relative; color:hsl(220 8% 28%); }
+  .fit-card li{ font-size:0.96rem; padding-left:1.3rem; position:relative; color:var(--muted); }
   .fit-card li::before{
     content:"";
     position:absolute; left:0; top:0.55em;
@@ -380,7 +383,7 @@
   }
   .step:hover .idx{ opacity:1; transform: translateX(4px); }
   .step h3{ font-size:1.1rem; font-weight:700; margin-bottom:0.4rem; }
-  .step p{ color:hsl(220 8% 30%); font-size:0.97rem; max-width:62ch; }
+  .step p{ color:var(--muted); font-size:0.97rem; max-width:62ch; }
   .step .pull{
     margin-top:0.6rem;
     font-weight:700;
@@ -396,7 +399,7 @@
     border-radius:18px;
     padding: 3rem 2.4rem;
     text-align:center;
-    background: linear-gradient(180deg, hsl(40 24% 98%), hsl(40 24% 95%));
+    background: linear-gradient(180deg, hsl(220 17% 13%), hsl(220 18% 10%));
     position:relative;
     overflow:hidden;
   }
@@ -410,14 +413,14 @@
     pointer-events:none;
   }
   .cta-band h2{ position:relative; }
-  .cta-band p{ position:relative; max-width:54ch; margin: 0.9rem auto 1.8rem; color:hsl(220 8% 30%); }
+  .cta-band p{ position:relative; max-width:54ch; margin: 0.9rem auto 1.8rem; color:var(--muted); }
   .cta-band .actions{ position:relative; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
   footer{
     border-top:1px solid var(--line);
     padding: 2.6rem 0 3.2rem;
     font-size:0.86rem;
-    color: hsl(220 8% 40%);
+    color: var(--muted-dim);
   }
   .foot-row{
     display:flex;
@@ -692,11 +695,13 @@
 
   var root = document.documentElement;
 
-  // 1) Subtle accent hue drift around a cool graphite-blue base (190–230)
-  var baseHue = 210;
-  var hue = baseHue + (Math.random() * 28 - 14); // ±14°
-  var sat = 14 + Math.random() * 10;             // 14–24%
-  var light = 38 + Math.random() * 10;           // 38–48%
+  // 1) Bold, saturated accent that drifts within a cool blue→violet→cyan
+  //    range — vivid enough to read as "impactful" against the dark
+  //    background, while staying inside one tasteful family of hues.
+  var baseHue = 208;
+  var hue = baseHue + (Math.random() * 50 - 25); // ~183–233° (azure → violet-blue → teal-cyan)
+  var sat = 64 + Math.random() * 22;             // 64–86%
+  var light = 56 + Math.random() * 12;           // 56–68% — bright enough to pop on dark
   root.style.setProperty('--accent-h', hue.toFixed(1));
   root.style.setProperty('--accent-s', sat.toFixed(1) + '%');
   root.style.setProperty('--accent-l', light.toFixed(1) + '%');
