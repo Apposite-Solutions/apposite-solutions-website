@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" role="img" aria-label="Apposite Solutions logo">
+  <title>Apposite</title>
+
+  <!-- Ring -->
+  <circle cx="120" cy="112" r="76" fill="none" stroke="#1a1a1a" stroke-width="7"/>
+
+  <!-- Letterform "A" -->
+  <path
+    fill-rule="evenodd"
+    fill="#1a1a1a"
+    d="
+      M120 54
+      L168 196
+      L150 196
+      L139.5 165
+      L100.5 165
+      L90 196
+      L72 196
+      Z
+      M120 92
+      L107 154
+      L133 154
+      Z
+    "
+  />
+
+  <!-- Wordmark -->
+  <text
+    x="120" y="270"
+    text-anchor="middle"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-weight="600"
+    font-size="32"
+    letter-spacing="7"
+    fill="#1a1a1a"
+  >APPOSITE</text>
+</svg>
