@@ -4,785 +4,366 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Apposite Solutions — Engineers who do managed services.</title>
-<meta name="description" content="Apposite Solutions is an engineering firm that delivers managed IT, cloud, and security through forward-deployed engineers — for trades businesses, associations, and SMBs underserved by traditional MSPs." />
+<meta name="description" content="Apposite Solutions — engineering-led managed services, cloud, and security for SMBs and trades businesses." />
 <style>
-  :root{
-    --ink: #eef1f4;
-    --paper: #0e1013;
-    --paper-dim: #15181c;
-    --surface: #181c21;
-    --line: rgba(255,255,255,0.09);
-    --line-strong: rgba(255,255,255,0.18);
-    --muted: hsl(220 12% 68%);
-    --muted-dim: hsl(220 10% 56%);
-    --accent-h: 206;
-    --accent-s: 78%;
-    --accent-l: 62%;
-    --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
-    --accent-soft: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.14);
-    --accent-line: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.35);
-    --ease: cubic-bezier(.22,.61,.36,1);
-    --dur-base: 0.7s;
-  }
+/* ============================================================
+   DESIGN 02 — BRUTALISM (the architectural movement)
+   Inspiration: Barbican Centre, Boston City Hall, Unité
+   d'Habitation. Raw poured-concrete grays, exposed structural
+   grid, hard offset shadows (no blur — cast like daylight on
+   concrete), mono/grotesk type, safety-orange signage accent.
+   Motion is mechanical: blocks slam into place, no float.
+   ============================================================ */
+:root{
+  --concrete:#86857f;
+  --concrete-dark:#5b5a55;
+  --concrete-deep:#2b2a27;
+  --slab:#d8d6cf;
+  --ink:#1b1a17;
+  --safety:#ff5e1a;
+  --accent: var(--safety);
+  --dur:.45s;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--slab);
+  color:var(--ink);
+  font-family: "Courier New", "Consolas", "Lucida Console", monospace;
+  line-height:1.5;
+}
+a{ color:inherit; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 1.4rem; }
 
-  *{ margin:0; padding:0; box-sizing:border-box; }
+.slab-bg{
+  position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;
+  background:
+    repeating-linear-gradient(180deg, rgba(0,0,0,0.025) 0 2px, transparent 2px 26px),
+    var(--slab);
+}
+.slab-bg .block{
+  position:absolute;
+  background: var(--concrete);
+  opacity:.16;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.18);
+}
 
-  html{ scroll-behavior:smooth; }
+header{
+  position:sticky; top:0; z-index:50;
+  background:var(--slab);
+  border-bottom: 6px solid var(--ink);
+}
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:1.1rem 0; }
+.brand{ display:flex; align-items:center; gap:.6rem; text-decoration:none; font-weight:700; letter-spacing:-0.02em; font-size:1.05rem; }
+.brand svg{ width:32px; height:32px; }
+nav ul{ display:flex; gap:0; list-style:none; border:3px solid var(--ink); }
+nav li + li{ border-left:3px solid var(--ink); }
+nav a{ display:block; text-decoration:none; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:0.55rem 0.9rem; transition: background var(--dur), color var(--dur); }
+nav a:hover{ background:var(--ink); color:var(--slab); }
+.cta-btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:0.65rem 1.15rem;
+  background:var(--ink); color:var(--slab);
+  border:3px solid var(--ink);
+  font-weight:700; font-size:0.8rem; letter-spacing:0.05em; text-transform:uppercase;
+  text-decoration:none;
+  box-shadow: 6px 6px 0 var(--safety);
+  transition: transform .18s, box-shadow .18s;
+}
+.cta-btn:hover{ transform: translate(3px,3px); box-shadow: 3px 3px 0 var(--safety); }
+@media (max-width:760px){ nav ul{ display:none; } }
 
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+[data-reveal]{
+  opacity:0;
+  transform: translateY(34px);
+  transition: opacity .4s steps(6,end), transform .4s cubic-bezier(.36,0,.2,1);
+  transition-delay: var(--reveal-delay,0ms);
+}
+[data-reveal].in{ opacity:1; transform:none; }
 
-  a{ color:inherit; }
+.hero{ padding:4.5rem 0 3rem; }
+.hero .stamp{
+  display:inline-block;
+  font-size:0.74rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em;
+  background:var(--ink); color:var(--safety);
+  padding:0.4rem 0.8rem;
+  margin-bottom:1.6rem;
+}
+.hero h1{
+  font-size: clamp(2.3rem, 6.6vw, 4.6rem);
+  font-weight:700;
+  letter-spacing:-0.03em;
+  line-height:1.04;
+  text-transform:uppercase;
+  max-width:18ch;
+}
+.hero h1 mark{
+  background:var(--ink); color:var(--safety);
+  padding:0 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.hero .lede{
+  margin-top:1.8rem;
+  font-size:1.02rem;
+  max-width:60ch;
+  border-left: 6px solid var(--ink);
+  padding-left:1.2rem;
+}
+.hero-actions{ margin-top:2.2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+.txt-link{ font-weight:700; font-size:0.84rem; text-transform:uppercase; letter-spacing:0.04em; text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:2px; }
+.txt-link:hover{ color:var(--safety); }
 
-  .wrap{
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 1.75rem;
-  }
+section{ padding:4rem 0; }
+.section-head{ max-width:64ch; margin-bottom:2.2rem; }
+.kicker{
+  display:inline-block;
+  font-size:0.74rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  background:var(--concrete-deep); color:var(--slab);
+  padding:0.32rem 0.7rem;
+  margin-bottom:1rem;
+}
+h2{ font-size:clamp(1.6rem,3.6vw,2.5rem); font-weight:700; letter-spacing:-0.02em; text-transform:uppercase; line-height:1.08; }
+.lead{ margin-top:1rem; font-size:1rem; max-width:64ch; color:var(--concrete-deep); }
 
-  /* ---------- Ambient accent field ---------- */
-  .field{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    overflow:hidden;
-  }
-  .field span{
-    position:absolute;
-    border-radius:50%;
-    filter: blur(60px);
-    opacity:.35;
-    background: radial-gradient(circle at 30% 30%, var(--accent-soft), transparent 70%);
-    animation: drift var(--drift-dur, 38s) var(--ease) infinite alternate;
-  }
-  .field span:nth-child(1){ width:42vmax; height:42vmax; top:-14vmax; left:-12vmax; animation-delay: var(--d1, 0s); }
-  .field span:nth-child(2){ width:34vmax; height:34vmax; bottom:-16vmax; right:-10vmax; animation-delay: var(--d2, -6s); }
-  .field span:nth-child(3){ width:26vmax; height:26vmax; top:38%; left:60%; animation-delay: var(--d3, -14s); }
+.cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.4rem; margin-top:1.6rem; }
+.card{
+  background:var(--slab);
+  border:3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--concrete-dark);
+  padding:1.5rem;
+  transition: transform .22s cubic-bezier(.36,0,.2,1), box-shadow .22s cubic-bezier(.36,0,.2,1);
+}
+.card:hover{ transform: translate(-4px,-4px); box-shadow: 12px 12px 0 var(--safety); }
+.card .tag{ display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:var(--ink); color:var(--safety); padding:0.2rem 0.5rem; margin-bottom:0.8rem; }
+.card h3{ font-size:1.05rem; font-weight:700; text-transform:uppercase; margin-bottom:0.5rem; letter-spacing:-0.01em; }
+.card p{ font-size:0.92rem; color:var(--concrete-deep); }
 
-  @keyframes drift{
-    0%   { transform: translate(0,0) scale(1); }
-    50%  { transform: translate(4%, 6%) scale(1.08); }
-    100% { transform: translate(-3%, -4%) scale(0.96); }
-  }
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:1.8rem; }
+@media (max-width:760px){ .split{ grid-template-columns:1fr; } }
+.panel{ border:3px solid var(--ink); padding:1.8rem; background:var(--slab); box-shadow:8px 8px 0 var(--concrete-dark); }
+.panel.dark{ background:var(--ink); color:var(--slab); box-shadow:8px 8px 0 var(--concrete); }
+.panel h3{ font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--safety); margin-bottom:1rem; }
+.panel ul{ list-style:none; display:grid; gap:0.6rem; }
+.panel li{ font-size:0.95rem; padding-left:1.5rem; position:relative; }
+.panel li::before{ content:"▮"; position:absolute; left:0; color:var(--safety); font-size:0.7rem; top:0.3em; }
 
-  /* line-grid variant accent (toggled via [data-motion="grid"]) */
-  .gridlines{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    opacity:0;
-    transition: opacity 1.2s var(--ease);
-    background-image:
-      linear-gradient(var(--accent-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--accent-line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 75%);
-  }
-  [data-motion="grid"] .gridlines{ opacity:.5; animation: gridshift 50s linear infinite; }
-  [data-motion="grid"] .field{ opacity:.35; }
-  @keyframes gridshift{
-    from{ background-position: 0 0, 0 0; }
-    to{ background-position: 256px 128px, 128px 256px; }
-  }
+.values{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.2rem; margin-top:1.8rem; }
+.value{ border:3px solid var(--ink); padding:1.4rem; background:var(--concrete); color:var(--slab); box-shadow:6px 6px 0 var(--concrete-deep); }
+.value .vn{ font-size:1.6rem; font-weight:700; color:var(--safety); line-height:1; }
+.value h3{ font-size:1rem; font-weight:700; text-transform:uppercase; margin:0.5rem 0 0.4rem; }
+.value p{ font-size:0.9rem; opacity:.9; }
 
-  /* ---------- Header ---------- */
-  header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    backdrop-filter: saturate(140%) blur(10px);
-    background: hsl(220 18% 9% / 0.72);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 0.95rem 0;
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:0.65rem;
-    font-weight:600;
-    letter-spacing:0.02em;
-    text-decoration:none;
-  }
-  .brand svg{ width:34px; height:34px; display:block; }
-  .brand span{ font-size:1.05rem; }
+.steps{ margin-top:1.8rem; display:grid; gap:1.4rem; }
+.step{ display:grid; grid-template-columns:96px 1fr; gap:1.4rem; border:3px solid var(--ink); padding:1.6rem; background:var(--slab); box-shadow:8px 8px 0 var(--concrete-dark); }
+@media (max-width:640px){ .step{ grid-template-columns:1fr; } }
+.step .big{ font-size:2.6rem; font-weight:700; color:var(--ink); -webkit-text-stroke: 2px var(--safety); }
+.step h3{ font-size:1.12rem; font-weight:700; text-transform:uppercase; margin-bottom:0.5rem; }
+.step p{ color:var(--concrete-deep); font-size:0.96rem; max-width:64ch; }
+.step .pull{ display:inline-block; margin-top:0.7rem; font-weight:700; padding:0.45rem 0.8rem; background:var(--ink); color:var(--safety); font-size:0.88rem; text-transform:uppercase; letter-spacing:0.03em; }
 
-  nav ul{
-    display:flex;
-    gap:1.6rem;
-    list-style:none;
-  }
-  nav a{
-    text-decoration:none;
-    font-size:0.92rem;
-    color:var(--ink);
-    opacity:.72;
-    position:relative;
-    padding-bottom:4px;
-    transition: opacity .25s var(--ease);
-  }
-  nav a::after{
-    content:"";
-    position:absolute;
-    left:0; right:100%;
-    bottom:0;
-    height:1px;
-    background: var(--accent);
-    transition: right .3s var(--ease);
-  }
-  nav a:hover{ opacity:1; }
-  nav a:hover::after{ right:0; }
+.cta{ border:6px solid var(--ink); padding:3rem 2rem; text-align:center; background:var(--concrete-deep); color:var(--slab); margin-top:1rem; box-shadow: 12px 12px 0 var(--safety); }
+.cta .kicker{ background:var(--safety); color:var(--ink); }
+.cta h2{ color:var(--slab); }
+.cta p{ max-width:56ch; margin:1rem auto 1.8rem; opacity:.85; }
+.cta .cta-btn{ background:var(--safety); color:var(--ink); border-color:var(--safety); box-shadow:6px 6px 0 var(--slab); }
+.cta .cta-btn:hover{ box-shadow:3px 3px 0 var(--slab); }
 
-  .cta-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:.5rem;
-    padding:0.6rem 1.15rem;
-    border:1px solid var(--ink);
-    border-radius:999px;
-    font-size:0.88rem;
-    font-weight:600;
-    text-decoration:none;
-    color:var(--ink);
-    background:transparent;
-    transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
-  }
-  .cta-btn:hover{
-    background:var(--ink);
-    color:var(--paper);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px -8px rgba(0,0,0,.55), 0 0 0 1px var(--accent-line);
-  }
-  .cta-btn .dot{
-    width:7px; height:7px; border-radius:50%;
-    background: var(--accent);
-    transition: transform .35s var(--ease);
-  }
-  .cta-btn:hover .dot{ transform: scale(1.6); }
+footer{ border-top:6px solid var(--ink); padding:2rem 0 3rem; }
+.foot{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
+.foot .mark{ color:var(--safety); }
 
-  /* ---------- Reveal mechanics ---------- */
-  [data-reveal]{
-    opacity:0;
-    transform: translateY(28px);
-    transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  [data-reveal].in{
-    opacity:1;
-    transform: translateY(0);
-  }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    padding: 7.5rem 0 6rem;
-    position:relative;
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:.55rem;
-    font-size:0.8rem;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:700;
-    margin-bottom:1.4rem;
-  }
-  .eyebrow::before{
-    content:"";
-    width:26px; height:1px;
-    background: var(--accent);
-  }
-  h1{
-    font-size: clamp(2.4rem, 6vw, 4.1rem);
-    line-height:1.08;
-    letter-spacing:-0.015em;
-    font-weight:700;
-    max-width: 16ch;
-  }
-  h1 em{
-    font-style:normal;
-    color: var(--accent);
-  }
-  .lede{
-    margin-top:1.6rem;
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    max-width: 56ch;
-    color: var(--muted);
-  }
-  .hero-actions{
-    margin-top:2.4rem;
-    display:flex;
-    flex-wrap:wrap;
-    gap:1rem;
-    align-items:center;
-  }
-  .ghost-link{
-    text-decoration:none;
-    color:var(--ink);
-    font-weight:600;
-    font-size:0.94rem;
-    border-bottom:1px solid var(--line-strong);
-    padding-bottom:3px;
-    transition: border-color .3s var(--ease), color .3s var(--ease);
-  }
-  .ghost-link:hover{ border-color: var(--accent); color:var(--accent); }
-
-  /* ---------- Section scaffolding ---------- */
-  section{ padding: 5.5rem 0; }
-  .section-head{ max-width: 60ch; margin-bottom: 2.6rem; }
-  .kicker{
-    font-size:0.78rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:700;
-    margin-bottom:0.8rem;
-  }
-  h2{
-    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-    letter-spacing:-0.01em;
-    font-weight:700;
-  }
-  .lead-text{
-    margin-top:0.9rem;
-    color: var(--muted);
-    font-size:1.05rem;
-    max-width: 64ch;
-  }
-
-  hr.rule{
-    border:none;
-    height:1px;
-    background:var(--line);
-  }
-
-  /* ---------- Cards / grids ---------- */
-  .grid{
-    display:grid;
-    gap:1.1rem;
-  }
-  .grid.cols-2{ grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
-  .grid.cols-4{ grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
-
-  .card{
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:1.6rem;
-    background: hsl(220 16% 12% / 0.55);
-    transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
-    position:relative;
-    overflow:hidden;
-  }
-  .card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
-    opacity:0;
-    transition: opacity .45s var(--ease);
-  }
-  .card:hover{
-    transform: translateY(-5px);
-    border-color: var(--accent-line);
-    box-shadow: 0 24px 56px -26px rgba(0,0,0,.6);
-    background: hsl(220 16% 14% / 0.8);
-  }
-  .card:hover::before{ opacity:1; }
-  .card h3{
-    font-size:1.08rem;
-    font-weight:700;
-    margin-bottom:0.55rem;
-    position:relative;
-  }
-  .card p{
-    font-size:0.95rem;
-    color: var(--muted);
-    position:relative;
-  }
-  .card .num{
-    display:inline-block;
-    font-size:0.78rem;
-    font-weight:700;
-    letter-spacing:0.08em;
-    color:var(--accent);
-    margin-bottom:0.65rem;
-    position:relative;
-  }
-
-  /* values list */
-  .values{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 0;
-    border-top:1px solid var(--line);
-  }
-  .value{
-    padding: 1.6rem 1.4rem;
-    border-bottom:1px solid var(--line);
-    border-right:1px solid var(--line);
-    transition: background .4s var(--ease);
-  }
-  .value:hover{ background: var(--accent-soft); }
-  .value h3{ font-size:1rem; font-weight:700; margin-bottom:0.4rem; }
-  .value p{ font-size:0.92rem; color:var(--muted); }
-
-  /* fit / not-fit columns */
-  .fit-grid{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap:1.4rem;
-  }
-  @media (max-width: 760px){ .fit-grid{ grid-template-columns: 1fr; } }
-  .fit-card{
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:1.8rem;
-  }
-  .fit-card.muted{ background: hsl(220 16% 13%); border-style:dashed; }
-  .fit-card h3{ font-size:1rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1rem; color:var(--accent); }
-  .fit-card ul{ list-style:none; display:grid; gap:0.6rem; }
-  .fit-card li{ font-size:0.96rem; padding-left:1.3rem; position:relative; color:var(--muted); }
-  .fit-card li::before{
-    content:"";
-    position:absolute; left:0; top:0.55em;
-    width:8px; height:1px;
-    background: var(--accent);
-  }
-
-  /* how it works */
-  .steps{ display:grid; gap:1.4rem; }
-  .step{
-    display:grid;
-    grid-template-columns: 64px 1fr;
-    gap:1.4rem;
-    align-items:start;
-    padding: 1.5rem 0;
-    border-bottom:1px solid var(--line);
-  }
-  .step:last-child{ border-bottom:none; }
-  .step .idx{
-    font-size:1.6rem;
-    font-weight:700;
-    color: var(--accent);
-    opacity:.55;
-    line-height:1;
-    transition: opacity .4s var(--ease), transform .4s var(--ease);
-  }
-  .step:hover .idx{ opacity:1; transform: translateX(4px); }
-  .step h3{ font-size:1.1rem; font-weight:700; margin-bottom:0.4rem; }
-  .step p{ color:var(--muted); font-size:0.97rem; max-width:62ch; }
-  .step .pull{
-    margin-top:0.6rem;
-    font-weight:700;
-    color: var(--ink);
-    border-left:2px solid var(--accent);
-    padding-left:0.8rem;
-    font-size:0.95rem;
-  }
-
-  /* CTA band */
-  .cta-band{
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding: 3rem 2.4rem;
-    text-align:center;
-    background: linear-gradient(180deg, hsl(220 17% 13%), hsl(220 18% 10%));
-    position:relative;
-    overflow:hidden;
-  }
-  .cta-band::after{
-    content:"";
-    position:absolute;
-    inset:-40% -10% auto -10%;
-    height:160%;
-    background: radial-gradient(circle, var(--accent-soft), transparent 65%);
-    animation: drift 30s var(--ease) infinite alternate;
-    pointer-events:none;
-  }
-  .cta-band h2{ position:relative; }
-  .cta-band p{ position:relative; max-width:54ch; margin: 0.9rem auto 1.8rem; color:var(--muted); }
-  .cta-band .actions{ position:relative; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-
-  footer{
-    border-top:1px solid var(--line);
-    padding: 2.6rem 0 3.2rem;
-    font-size:0.86rem;
-    color: var(--muted-dim);
-  }
-  .foot-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:1rem;
-  }
-  .foot-brand{ display:flex; align-items:center; gap:.5rem; color:var(--ink); font-weight:600; }
-  .foot-brand svg{ width:22px; height:22px; }
-
-  @media (max-width: 720px){
-    nav ul{ display:none; }
-    .brand span{ display:none; }
-    .nav{ gap:0.75rem; }
-  }
-
-  ::selection{ background: var(--accent-soft); color:var(--ink); }
-
-  @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior:auto !important;
-    }
-    [data-reveal]{ opacity:1; transform:none; }
-  }
+::selection{ background:var(--ink); color:var(--safety); }
+@media (prefers-reduced-motion: reduce){
+  *{ transition-duration:.01ms !important; animation-duration:.01ms !important; }
+  [data-reveal]{ opacity:1; transform:none; }
+}
 </style>
 </head>
 <body>
+<div class="slab-bg" aria-hidden="true">
+  <span class="block" style="width:34vmax;height:46vmax;top:-8vmax;right:-12vmax;transform:rotate(8deg);"></span>
+  <span class="block" style="width:26vmax;height:30vmax;bottom:-10vmax;left:-8vmax;transform:rotate(-6deg);"></span>
+</div>
 
-  <div class="field" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="gridlines" aria-hidden="true"></div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 240 300" aria-hidden="true"><circle cx="120" cy="112" r="76" fill="none" stroke="currentColor" stroke-width="11"/><path fill-rule="evenodd" fill="currentColor" d="M120 54 L168 196 L150 196 L139.5 165 L100.5 165 L90 196 L72 196 Z M120 92 L107 154 L133 154 Z"/></svg>
+      Apposite Solutions
+    </a>
+    <nav aria-label="Primary"><ul>
+      <li><a href="#different">Why us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#fit">Who we serve</a></li>
+    </ul></nav>
+    <a class="cta-btn" href="mailto:hello@apposite.solutions">Get in touch</a>
+  </div>
+</header>
 
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top">
-        <svg viewBox="0 0 240 300" role="img" aria-label="Apposite mark">
-          <circle cx="120" cy="112" r="76" fill="none" stroke="currentColor" stroke-width="9"/>
-          <path fill-rule="evenodd" fill="currentColor" d="M120 54 L168 196 L150 196 L139.5 165 L100.5 165 L90 196 L72 196 Z M120 92 L107 154 L133 154 Z"/>
-        </svg>
-        <span>Apposite Solutions</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#different">Why us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#fit">Who we serve</a></li>
-        </ul>
-      </nav>
-      <a class="cta-btn" href="mailto:hello@apposite.solutions"><span class="dot"></span> Get in touch</a>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="stamp" data-reveal>Form follows function — engineered, not decorated</span>
+      <h1 data-reveal>Engineers who do <mark>managed services.</mark></h1>
+      <p class="lede" data-reveal>Most IT companies are help desks that resell software. We embed engineers who can support your systems <em>and</em> fix them — your cloud, your security, or wiring your website into your inventory backend.</p>
+      <div class="hero-actions" data-reveal>
+        <a class="cta-btn" href="mailto:hello@apposite.solutions">Start a conversation</a>
+        <a class="txt-link" href="#different">What makes us different</a>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow" data-reveal>Engineering-led managed services</p>
-        <h1 data-reveal>Engineers who do <em>managed services.</em></h1>
-        <p class="lede" data-reveal>
-          Most IT companies are help desks that resell software. We're engineers who do managed services —
-          we embed someone in your business who can support your systems <em>and</em> fix them, whether
-          that's your cloud, your security, or wiring your website into your inventory backend.
-        </p>
-        <div class="hero-actions" data-reveal>
-          <a class="cta-btn" href="mailto:hello@apposite.solutions"><span class="dot"></span> Start a conversation</a>
-          <a class="ghost-link" href="#different">See what makes us different ↓</a>
+  <section id="mission">
+    <div class="wrap">
+      <p class="kicker" data-reveal>Mission &amp; Vision</p>
+      <h2 data-reveal>IT, run the way it should be run.</h2>
+      <div class="split" data-reveal>
+        <div class="panel">
+          <h3>Mission</h3>
+          <p>We're engineers who run IT the way it should be run — embedded in our clients' operations, owning real problems across infrastructure, cloud, security, and the application layer. Managed services is how we stay close; engineering is what clients are actually paying for.</p>
+        </div>
+        <div class="panel dark">
+          <h3>Vision</h3>
+          <p>Small and mid-sized organizations getting genuine engineering talent on the ground — not a remote help desk reading scripts, and not a vendor defending the edges of a contract. No one told <em>"that's just how it works"</em> by a provider who never learned their business.</p>
         </div>
       </div>
-    </section>
-
-    <section id="mission">
-      <div class="wrap">
-        <div class="grid cols-2">
-          <div data-reveal>
-            <p class="kicker">Mission</p>
-            <h2>IT, run the way it should be.</h2>
-            <p class="lead-text">
-              We're engineers who run IT the way it should be run — embedded in our clients' operations,
-              owning real problems across infrastructure, cloud, security, and the application layer.
-              Managed services is how we stay close; engineering is what clients are actually paying for.
-            </p>
-          </div>
-          <div data-reveal>
-            <p class="kicker">Vision</p>
-            <h2>Real engineering talent, on the ground.</h2>
-            <p class="lead-text">
-              Small and mid-sized organizations getting genuine engineering talent on the ground — not a
-              remote help desk reading scripts, and not a vendor defending the edges of a contract.
-              No one told <em>"that's just how it works"</em> by a provider who never learned their business.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="different">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">What makes us different</p>
-          <h2>We staff engineers. Most providers staff technicians.</h2>
-          <p class="lead-text">
-            Most IT providers staff technicians and resell tools. We staff engineers and embed them in your
-            operation — so the people supporting you can also build: integrate systems, fix platforms,
-            harden security, and own the outcome instead of closing a ticket.
-          </p>
-        </div>
-        <div class="grid cols-2">
-          <div class="card" data-reveal>
-            <p class="num">THE LINE</p>
-            <h3>For organizations whose problems keep crossing the line</h3>
-            <p>Between "IT" and "needs an actual engineer" — that's exactly where we live, and where most providers quietly stop helping.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">IN PRACTICE</p>
-            <h3>Work a traditional MSP calls "not our job"</h3>
-            <p>Connecting a Squarespace storefront to a vendor inventory backend. Rebuilding the layout on a legacy CMS. We call it Tuesday.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Services</p>
-          <h2>The embedded engineer is the product.</h2>
-          <p class="lead-text">The categories below are what they deliver — across the full stack, not just the parts that are easy to staff.</p>
-        </div>
-        <div class="grid cols-4">
-          <div class="card" data-reveal>
-            <p class="num">01</p>
-            <h3>Embedded Engineering</h3>
-            <p>A senior engineer who knows your systems and owns outcomes across the stack — from infrastructure to the application and web layer.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">02</p>
-            <h3>Managed IT &amp; Support</h3>
-            <p>Day-to-day operations, run by people who can also build.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">03</p>
-            <h3>Cloud</h3>
-            <p>Architecture, migration, and ongoing operations.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">04</p>
-            <h3>Security Strategy &amp; Posture</h3>
-            <p>Risk assessment, hardening, and a defensible roadmap.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="values">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Core values</p>
-          <h2>Apt, by name.</h2>
-        </div>
-        <div class="values" data-reveal>
-          <div class="value">
-            <h3>Engineers, not a queue.</h3>
-            <p>The person who supports you can also build and fix. That's the whole point.</p>
-          </div>
-          <div class="value">
-            <h3>Proximity is the product.</h3>
-            <p>Forward-deployed, embedded, accountable. Distance is what we replace.</p>
-          </div>
-          <div class="value">
-            <h3>Question the inherited default.</h3>
-            <p>"That's how it's always been done" is where the conversation starts, never where it ends.</p>
-          </div>
-          <div class="value">
-            <h3>Apt, by name.</h3>
-            <p>The right fix for this context — not the templated one.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="how">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">How it works</p>
-          <h2>Falling ticket volume is a deliverable, not an accident.</h2>
-        </div>
-        <div class="steps">
-          <div class="step" data-reveal>
-            <span class="idx">01</span>
-            <div>
-              <h3>Your engineer doesn't reset passwords.</h3>
-              <p>A thin triage layer handles commodity requests — password resets, printer issues — through self-service and automation. Your embedded engineer owns the account and the hard problems, and engineers away recurring issues by fixing root causes.</p>
-              <p class="pull">They build the system so you stop having to ask.</p>
-            </div>
-          </div>
-          <div class="step" data-reveal>
-            <span class="idx">02</span>
-            <div>
-              <h3>We fix and connect what you have.</h3>
-              <p>Bounded fixes, integrations, and configuration improvements are in-scope embedded work. Net-new applications or maintained codebases are scoped separately — on terms that don't compromise the work.</p>
-              <p class="pull">We build net-new under a separate statement of work.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="fit">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Who we're for</p>
-          <h2>Fit matters more than fees.</h2>
-        </div>
-        <div class="fit-grid" data-reveal>
-          <div class="fit-card">
-            <h3>Best fit</h3>
-            <ul>
-              <li>10–250 seat organizations with real IT pain and no strong internal team</li>
-              <li>Multi-entity associations needing coordination across members</li>
-              <li>Leadership fed up with help-desk runaround who want a partner that can build, not just maintain</li>
-              <li>Verticals we know well: trades businesses, member &amp; industry associations</li>
-            </ul>
-          </div>
-          <div class="fit-card muted">
-            <h3>Not a fit</h3>
-            <ul>
-              <li>Pure price shoppers</li>
-              <li>Anyone who wants a hands-off portal and a per-seat invoice</li>
-              <li>There are plenty of providers built for that — we're not one of them</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="cta-band" data-reveal>
-          <p class="kicker">Let's talk</p>
-          <h2>Bring us the problem that keeps crossing the line.</h2>
-          <p>For trades businesses, associations, and SMBs underserved by traditional MSPs — we deliver managed IT, cloud, and security through forward-deployed engineers who support <em>and</em> build.</p>
-          <div class="actions">
-            <a class="cta-btn" href="mailto:hello@apposite.solutions"><span class="dot"></span> Email hello@apposite.solutions</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap foot-row">
-      <div class="foot-brand">
-        <svg viewBox="0 0 240 300" role="img" aria-hidden="true">
-          <circle cx="120" cy="112" r="76" fill="none" stroke="currentColor" stroke-width="9"/>
-          <path fill-rule="evenodd" fill="currentColor" d="M120 54 L168 196 L150 196 L139.5 165 L100.5 165 L90 196 L72 196 Z M120 92 L107 154 L133 154 Z"/>
-        </svg>
-        Apposite Solutions
-      </div>
-      <span>Engineers who do managed services.</span>
-      <span>&copy; <span id="year"></span> Apposite Solutions</span>
     </div>
-  </footer>
+  </section>
+
+  <section id="different">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">What makes us different</p>
+        <h2>We staff engineers. Most providers staff technicians.</h2>
+        <p class="lead">Most IT providers staff technicians and resell tools. We staff engineers and embed them in your operation — so the people supporting you can also build: integrate systems, fix platforms, harden security, and own the outcome instead of closing a ticket. We're for organizations whose problems keep crossing the line between "IT" and "needs an actual engineer."</p>
+      </div>
+      <div class="cards" data-reveal>
+        <div class="card"><span class="tag">In practice</span><h3>The Squarespace problem</h3><p>Connecting a storefront to a vendor inventory backend — work a traditional MSP calls "not our job." We call it Tuesday.</p></div>
+        <div class="card"><span class="tag">In practice</span><h3>The legacy CMS</h3><p>Rebuilding the layout on a system nobody wants to touch — because somebody has to, and it might as well be done right.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Services</p>
+        <h2>The embedded engineer is the product.</h2>
+        <p class="lead">The categories below are what they deliver — across the full stack, not just the parts that are easy to staff.</p>
+      </div>
+      <div class="cards" data-reveal>
+        <div class="card"><span class="tag">01</span><h3>Embedded Engineering</h3><p>A senior engineer who knows your systems and owns outcomes across the stack — infrastructure to application and web layer.</p></div>
+        <div class="card"><span class="tag">02</span><h3>Managed IT &amp; Support</h3><p>Day-to-day operations, run by people who can also build.</p></div>
+        <div class="card"><span class="tag">03</span><h3>Cloud</h3><p>Architecture, migration, and ongoing operations.</p></div>
+        <div class="card"><span class="tag">04</span><h3>Security Strategy &amp; Posture</h3><p>Risk assessment, hardening, and a defensible roadmap.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="values">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Core values</p>
+        <h2>Apt, by name.</h2>
+      </div>
+      <div class="values" data-reveal>
+        <div class="value"><p class="vn">01</p><h3>Engineers, not a queue</h3><p>The person who supports you can also build and fix. That's the whole point.</p></div>
+        <div class="value"><p class="vn">02</p><h3>Proximity is the product</h3><p>Forward-deployed, embedded, accountable. Distance is what we replace.</p></div>
+        <div class="value"><p class="vn">03</p><h3>Question the default</h3><p>"That's how it's always been done" is where the conversation starts, never where it ends.</p></div>
+        <div class="value"><p class="vn">04</p><h3>Apt, by name</h3><p>The right fix for this context — not the templated one.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">How it works</p>
+        <h2>Falling ticket volume is a deliverable.</h2>
+      </div>
+      <div class="steps" data-reveal>
+        <div class="step">
+          <span class="big">01</span>
+          <div>
+            <h3>Your engineer doesn't reset passwords</h3>
+            <p>A thin triage layer handles commodity requests — password resets, printer issues — through self-service and automation. Your embedded engineer owns the account and the hard problems, engineering away recurring issues by fixing root causes.</p>
+            <span class="pull">They build the system so you stop having to ask.</span>
+          </div>
+        </div>
+        <div class="step">
+          <span class="big">02</span>
+          <div>
+            <h3>We fix and connect what you have</h3>
+            <p>Bounded fixes, integrations, and configuration improvements are in-scope embedded work. Net-new applications or maintained codebases are scoped separately — on terms that don't compromise the work.</p>
+            <span class="pull">We build net-new under a separate statement of work.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fit">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">Who we're for</p>
+        <h2>Fit matters more than fees.</h2>
+      </div>
+      <div class="split" data-reveal>
+        <div class="panel">
+          <h3>Best fit</h3>
+          <ul>
+            <li>10–250 seat organizations with real IT pain and no strong internal team</li>
+            <li>Multi-entity associations needing coordination across members</li>
+            <li>Leadership fed up with help-desk runaround who want a partner that can build</li>
+            <li>Verticals we know: trades businesses, member &amp; industry associations</li>
+          </ul>
+        </div>
+        <div class="panel dark">
+          <h3>Not a fit</h3>
+          <ul>
+            <li>Pure price shoppers</li>
+            <li>Anyone who wants a hands-off portal and a per-seat invoice</li>
+            <li>There are plenty of providers built for that — we're not one of them</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta" data-reveal>
+        <p class="kicker">Let's talk</p>
+        <h2>Bring us the problem that keeps crossing the line.</h2>
+        <p>For trades businesses, associations, and SMBs underserved by traditional MSPs — we deliver managed IT, cloud, and security through forward-deployed engineers who support <em>and</em> build.</p>
+        <a class="cta-btn" href="mailto:hello@apposite.solutions">Email hello@apposite.solutions</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span><span class="mark">■</span> Apposite Solutions</span>
+    <span>Engineers who do managed services.</span>
+    <span>&copy; <span id="year"></span></span>
+  </div>
+</footer>
 
 <script>
 (function(){
-  // ---- Per-load tasteful randomization -------------------------------
-  // Small, bounded variation: accent hue, motion style, animation timing
-  // and reveal order/stagger. Never enough to look unstable.
-
-  var root = document.documentElement;
-
-  // 1) Bold, saturated accent that drifts within a cool blue→violet→cyan
-  //    range — vivid enough to read as "impactful" against the dark
-  //    background, while staying inside one tasteful family of hues.
-  var baseHue = 208;
-  var hue = baseHue + (Math.random() * 50 - 25); // ~183–233° (azure → violet-blue → teal-cyan)
-  var sat = 64 + Math.random() * 22;             // 64–86%
-  var light = 56 + Math.random() * 12;           // 56–68% — bright enough to pop on dark
-  root.style.setProperty('--accent-h', hue.toFixed(1));
-  root.style.setProperty('--accent-s', sat.toFixed(1) + '%');
-  root.style.setProperty('--accent-l', light.toFixed(1) + '%');
-
-  // 2) Pick one of two understated ambient motion styles
-  var motionStyles = ['drift', 'grid'];
-  var motion = motionStyles[Math.floor(Math.random() * motionStyles.length)];
-  document.body.setAttribute('data-motion', motion);
-
-  // 3) Randomize ambient drift timing within a calm range
-  var driftDur = (32 + Math.random() * 18).toFixed(1) + 's';
-  root.style.setProperty('--drift-dur', driftDur);
-  root.style.setProperty('--d1', '-' + (Math.random() * 10).toFixed(1) + 's');
-  root.style.setProperty('--d2', '-' + (6 + Math.random() * 10).toFixed(1) + 's');
-  root.style.setProperty('--d3', '-' + (12 + Math.random() * 14).toFixed(1) + 's');
-
-  // 4) Slightly vary the base reveal duration (within a tasteful band)
-  var dur = (0.6 + Math.random() * 0.3).toFixed(2) + 's';
-  root.style.setProperty('--dur-base', dur);
-
-  // ---- Reveal-on-scroll with randomized-but-bounded stagger ----------
-  var groups = {};
-  document.querySelectorAll('[data-reveal]').forEach(function(el){
-    var section = el.closest('section') || el.closest('header') || document.body;
-    var key = section;
-    if (!groups.hasOwnProperty(key)) groups[key] = [];
-    groups[key] ? null : (groups[key] = []);
-  });
-
-  // Build per-section ordered lists, then assign a gently randomized stagger
-  var sections = Array.from(document.querySelectorAll('section, header'));
-  sections.forEach(function(section){
-    var items = Array.from(section.querySelectorAll('[data-reveal]'));
-    if (!items.length) return;
-
-    // Subtle entrance-order variation: mostly top-to-bottom, occasionally
-    // swap two adjacent items so the reveal order isn't identical every time.
-    if (items.length > 2 && Math.random() < 0.5) {
-      var i = Math.floor(Math.random() * (items.length - 1));
-      var a = items[i], b = items[i+1];
-      items[i] = b; items[i+1] = a;
-    }
-
-    var baseStep = 90 + Math.random() * 70; // 90–160ms between items
-    items.forEach(function(el, idx){
-      var jitter = Math.random() * 60 - 30; // ±30ms
-      var delay = Math.max(0, idx * baseStep + jitter);
-      el.style.setProperty('--reveal-delay', delay.toFixed(0) + 'ms');
-    });
-  });
-
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-
-  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
-
-  // ---- Subtle parallax on the ambient field (mouse + scroll) ---------
-  var field = document.querySelector('.field');
-  var ticking = false;
-  function updateParallax(x, y){
-    if (!field) return;
-    field.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-  }
-  window.addEventListener('mousemove', function(e){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      var nx = (e.clientX / window.innerWidth - 0.5) * 16;
-      var ny = (e.clientY / window.innerHeight - 0.5) * 16;
-      updateParallax(nx, ny);
-      ticking = false;
-    });
-  });
-
   document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('section, header').forEach(function(section){
+    Array.from(section.querySelectorAll('[data-reveal]')).forEach(function(el, idx){
+      el.style.setProperty('--reveal-delay', (idx*90)+'ms');
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.14, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
