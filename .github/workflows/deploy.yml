@@ -16,6 +16,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Build config.js from secrets
+        run: |
+          cat > config.js <<'JS'
+          window.APPOSITE_CONFIG = {
+            company:   "${{ secrets.SITE_COMPANY }}",
+            email:     "${{ secrets.CONTACT_EMAIL }}",
+            // phone:     "${{ secrets.CONTACT_PHONE }}",
+            // phoneHref: "${{ secrets.CONTACT_PHONE_HREF }}",
+            domain:    "${{ secrets.SITE_DOMAIN }}",
+            url:       "${{ secrets.SITE_URL }}",
+
+            // social: {
+            //   linkedin: "${{ secrets.LINKEDIN_URL }}",
+            // }
+          };
+          JS
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:

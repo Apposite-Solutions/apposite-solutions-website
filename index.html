@@ -1,783 +1,682 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Apposite Solutions — Engineers who do managed services.</title>
-<meta name="description" content="Apposite Solutions is an engineering firm that delivers managed IT, cloud, and security through forward-deployed engineers — for trades businesses, associations, and SMBs underserved by traditional MSPs." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apposite Solutions — Managed services</title>
+<meta name="description" content="Apposite Solutions embeds a senior engineer in your business — someone who can support your systems and fix them. Managed IT, Cloud, Security, and the application layer for 10–250 seat organizations.">
+<link rel="canonical" href="https://apposite.io/">
+<meta name="theme-color" content="#13314c">
+
+<!-- Favicons & app icons -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Apposite Solutions">
+<meta property="og:title" content="Apposite Solutions — Managed services">
+<meta property="og:description" content="We embed a senior engineer in your business — someone who can support your systems and fix them. Managed IT, Cloud, Security, and the app layer.">
+<meta property="og:url" content="https://apposite.io/">
+<meta property="og:image" content="https://apposite.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apposite Solutions — Managed services">
+<meta name="twitter:description" content="We embed a senior engineer in your business — someone who can support your systems and fix them.">
+<meta name="twitter:image" content="https://apposite.io/assets/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink: #16181b;
-    --paper: #f7f6f3;
-    --paper-dim: #efeee9;
-    --line: rgba(22,24,27,0.12);
-    --line-strong: rgba(22,24,27,0.22);
-    --accent-h: 210;
-    --accent-s: 18%;
-    --accent-l: 42%;
-    --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
-    --accent-soft: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.14);
-    --accent-line: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.35);
-    --ease: cubic-bezier(.22,.61,.36,1);
-    --dur-base: 0.7s;
-  }
+/* ============================================================
+   APPOSITE — Brand tokens (inlined for a self-contained file)
+   ============================================================ */
+:root{
+  --ink:#13314c; --ink-900:#0d2438; --ink-700:#1d4566;
+  --teal:#2f8581; --teal-600:#287571; --teal-300:#8fc0bd;
+  --paper:#f4f6f7; --surface:#ffffff; --mist:#e3e9ec; --mist-700:#cdd6db;
+  --slate:#5a6b78; --text:#15222c;
+  --serif:"Spectral",Georgia,serif;
+  --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --maxw:1120px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
+body{margin:0;font-family:var(--sans);color:var(--text);background:var(--surface);font-size:18px;line-height:1.6;}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0;text-wrap:balance;}
+p{margin:0;text-wrap:pretty;}
+a{color:inherit;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-600);}
+.accent{color:var(--teal);}
 
-  *{ margin:0; padding:0; box-sizing:border-box; }
+/* ---------- Buttons (micro-interactions) ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:16px;line-height:1;padding:16px 24px;border-radius:6px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;overflow:hidden;isolation:isolate;transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),border-color .3s,color .3s;}
+.btn .lab{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px;}
+.btn .arw{transition:transform .4s var(--ease-out);}
+.btn:hover .arw{transform:translateX(5px);}
+.btn::before{content:"";position:absolute;inset:0;z-index:0;transform:translateY(101%);transition:transform .45s var(--ease-out);}
+.btn:hover::before{transform:translateY(0);}
+.btn:active{transform:translateY(1px) scale(.99);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary::before{background:var(--ink-900);}
+.btn-primary:hover{box-shadow:0 14px 30px -12px rgba(13,36,56,.55);}
+.btn-teal{background:var(--teal);color:#fff;}
+.btn-teal::before{background:var(--teal-600);}
+.btn-teal:hover{box-shadow:0 14px 30px -12px rgba(47,133,129,.6);}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--mist-700);}
+.btn-ghost::before{background:var(--paper);}
+.btn-ghost:hover{border-color:var(--ink);}
+.btn-tint{background:var(--teal);color:#fff;}
+.btn-tint::before{background:#3a9a95;}
+.btn-tint:hover{box-shadow:0 14px 34px -12px rgba(47,133,129,.7);}
+.btn-line{background:transparent;color:#fff;border-color:#2b557a;}
+.btn-line::before{background:rgba(255,255,255,.06);}
+.btn-line:hover{border-color:var(--teal-300);}
 
-  html{ scroll-behavior:smooth; }
+/* ---------- The Point (logo device) ---------- */
+.point{display:inline-block;vertical-align:middle;}
+.point .ring{fill:none;stroke:var(--ink);}
+.point .dot{fill:var(--teal);}
 
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s,background .3s;}
+.nav.scrolled{border-color:var(--mist);box-shadow:0 6px 24px -18px rgba(13,36,56,.5);}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:15px 32px;display:flex;align-items:center;gap:26px;}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.brand-text{display:flex;flex-direction:column;gap:2px;}
+.brand .name{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--ink);letter-spacing:-.01em;line-height:1;}
+.brand .tagline{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);line-height:1;}
+.brand .logo-mark{overflow:visible;vertical-align:middle;position:relative;top:-1px;}
+.brand .logo-mark .ring{stroke:var(--ink);transition:stroke-dashoffset .6s var(--ease-out);}
+.brand .logo-mark .tick{stroke:var(--teal);stroke-width:2;stroke-linecap:round;opacity:0;transform-origin:32px 32px;transition:opacity .4s ease;}
+.brand:hover .logo-mark{animation:spinTicks 9s linear infinite;}
+.brand:hover .logo-mark .tick{opacity:1;}
+.brand:hover .logo-mark .dot{animation:dotPulse 1.6s var(--ease-out) infinite;}
+@keyframes spinTicks{to{transform:rotate(360deg);}}
+.nav-links{margin-left:auto;display:flex;align-items:center;gap:26px;}
+.nav-links a{text-decoration:none;color:var(--slate);font-size:15px;font-weight:500;white-space:nowrap;position:relative;transition:color .2s;}
+.nav-links a.btn-teal{color:#fff;}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1.5px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out);}
+.nav-links a:not(.btn):hover{color:var(--ink);}
+.nav-links a:not(.btn):hover::after{transform:scaleX(1);}
+.nav-links .btn{padding:11px 18px;font-size:14px;}
+@media(max-width:760px){.nav-links a:not(.btn){display:none;}}
 
-  a{ color:inherit; }
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:96px 0 86px;overflow:hidden;}
+.hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.hero .wrap{position:relative;z-index:2;}
+.hero .eyebrow{margin-bottom:26px;}
+.hero h1{font-size:clamp(40px,6.4vw,84px);line-height:1.02;letter-spacing:-.025em;color:var(--ink);}
+.line{display:block;overflow:hidden;padding-bottom:.06em;}
+.line .li{display:inline-block;transform:translateY(112%);white-space:nowrap;will-change:transform;}
+@media(max-width:560px){.line .li{white-space:normal;}}
+.hero .lede{font-size:clamp(19px,2.2vw,23px);color:var(--slate);max-width:50ch;margin-top:30px;line-height:1.55;}
+.hero .lede b{color:var(--ink);font-weight:600;}
+.hero .cta{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;}
+.hero-foot{margin-top:64px;display:flex;gap:40px;flex-wrap:wrap;border-top:1px solid var(--mist);padding-top:26px;}
+.hero-foot .stat .k{font-family:var(--serif);font-size:30px;color:var(--ink);font-weight:600;}
+.hero-foot .stat .l{font-size:13.5px;color:var(--slate);margin-top:2px;max-width:30ch;}
+.aos-k{display:inline-flex;align-items:baseline;}
+.aos-k .point{margin:0 .02em;transform:translateY(3px);}
 
-  .wrap{
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 1.75rem;
-  }
+/* hero entrance timeline */
+.hero .eyebrow,.hero .lede,.hero .cta,.hero-foot{opacity:0;transform:translateY(22px);}
+.hero.go .eyebrow{animation:fadeUp .8s var(--ease-out) .15s forwards;}
+.hero.go .lede{animation:fadeUp .9s var(--ease-out) .55s forwards;}
+.hero.go .cta{animation:fadeUp .9s var(--ease-out) .72s forwards;}
+.hero.go .hero-foot{animation:fadeUp .9s var(--ease-out) .9s forwards;}
+.hero.go .line:nth-child(1) .li{animation:wordUp .9s var(--ease-out) .12s forwards;}
+.hero.go .line:nth-child(2) .li{animation:wordUp .95s var(--ease-out) .3s forwards;}
+@keyframes fadeUp{to{opacity:1;transform:none;}}
+@keyframes wordUp{to{transform:none;}}
+.no-js .line .li{transform:none;}
+.no-js .hero .eyebrow,.no-js .hero .lede,.no-js .hero .cta,.no-js .hero-foot{opacity:1;transform:none;}
+/* belt-and-suspenders: if the entrance timeline never runs (throttled tab/print), pin the final state */
+.hero.shown .li{animation:none;transform:none;}
+.hero.shown .eyebrow,.hero.shown .lede,.hero.shown .cta,.hero.shown .hero-foot{animation:none;opacity:1;transform:none;}
+.rv.shown{transition:none;opacity:1;transform:none;}
+@media print{
+  .rv,.line .li,.hero .eyebrow,.hero .lede,.hero .cta,.hero-foot{opacity:1!important;transform:none!important;animation:none!important;}
+  .hero-canvas,.band-canvas{display:none!important;}
+}
 
-  /* ---------- Ambient accent field ---------- */
-  .field{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    overflow:hidden;
-  }
-  .field span{
-    position:absolute;
-    border-radius:50%;
-    filter: blur(60px);
-    opacity:.35;
-    background: radial-gradient(circle at 30% 30%, var(--accent-soft), transparent 70%);
-    animation: drift var(--drift-dur, 38s) var(--ease) infinite alternate;
-  }
-  .field span:nth-child(1){ width:42vmax; height:42vmax; top:-14vmax; left:-12vmax; animation-delay: var(--d1, 0s); }
-  .field span:nth-child(2){ width:34vmax; height:34vmax; bottom:-16vmax; right:-10vmax; animation-delay: var(--d2, -6s); }
-  .field span:nth-child(3){ width:26vmax; height:26vmax; top:38%; left:60%; animation-delay: var(--d3, -14s); }
+/* ---------- SECTION SCAFFOLD ---------- */
+.band{position:relative;padding:96px 0;overflow:hidden;}
+.band.tinted{background:var(--paper);}
+.band.dark{background:var(--ink);}
+.band.dark h2,.band.dark h3,.band.dark p{color:#fff;}
+.band-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.band.dark .wrap{position:relative;z-index:2;}
+.sec-eyebrow{margin-bottom:18px;}
+.sec-title{font-size:clamp(30px,4vw,46px);letter-spacing:-.018em;max-width:18ch;}
+.lead-row{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;}
+.lead-row p{font-size:19px;color:var(--slate);line-height:1.6;}
+.band.dark .lead-row p{color:#c4d2dc;}
+@media(max-width:820px){.lead-row{grid-template-columns:1fr;gap:22px;}}
 
-  @keyframes drift{
-    0%   { transform: translate(0,0) scale(1); }
-    50%  { transform: translate(4%, 6%) scale(1.08); }
-    100% { transform: translate(-3%, -4%) scale(0.96); }
-  }
+/* ---------- Scroll reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:calc(var(--i,0) * 90ms);will-change:opacity,transform;}
+.rv.in{opacity:1;transform:none;}
+.no-js .rv{opacity:1;transform:none;}
 
-  /* line-grid variant accent (toggled via [data-motion="grid"]) */
-  .gridlines{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    opacity:0;
-    transition: opacity 1.2s var(--ease);
-    background-image:
-      linear-gradient(var(--accent-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--accent-line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 75%);
-  }
-  [data-motion="grid"] .gridlines{ opacity:.5; animation: gridshift 50s linear infinite; }
-  [data-motion="grid"] .field{ opacity:.35; }
-  @keyframes gridshift{
-    from{ background-position: 0 0, 0 0; }
-    to{ background-position: 256px 128px, 128px 256px; }
-  }
+/* ---------- DIFFERENTIATOR ---------- */
+.diff-quote{font-family:var(--serif);font-size:clamp(26px,3.4vw,40px);line-height:1.22;color:var(--ink);letter-spacing:-.015em;max-width:20ch;margin-top:6px;}
+.diff-quote .accent{font-style:italic;}
+.diff-split{display:grid;grid-template-columns:1fr 1fr;margin-top:56px;border:1px solid var(--mist);border-radius:14px;overflow:hidden;background:var(--surface);}
+.diff-side{padding:36px 38px;position:relative;transition:background .4s var(--ease);}
+.diff-side+.diff-side{border-left:1px solid var(--mist);}
+.diff-side .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;}
+.diff-side.them .h{color:var(--slate);}
+.diff-side.us .h{color:var(--teal-600);}
+.diff-side p{font-size:18px;line-height:1.55;}
+.diff-side.them p{color:var(--slate);}
+.diff-side.us{background:var(--paper);}
+.diff-side.us::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--teal);transform:scaleY(0);transform-origin:top;transition:transform .7s var(--ease-out);}
+.diff-split.in .diff-side.us::before{transform:scaleY(1);}
+@media(max-width:760px){.diff-split{grid-template-columns:1fr;}.diff-side+.diff-side{border-left:none;border-top:1px solid var(--mist);}}
 
-  /* ---------- Header ---------- */
-  header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    backdrop-filter: saturate(140%) blur(10px);
-    background: hsl(40 20% 96% / 0.72);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 0.95rem 0;
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:0.65rem;
-    font-weight:600;
-    letter-spacing:0.02em;
-    text-decoration:none;
-  }
-  .brand svg{ width:34px; height:34px; display:block; }
-  .brand span{ font-size:1.05rem; }
+/* ---------- SERVICES ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--mist);border:1px solid var(--mist);border-radius:14px;overflow:hidden;margin-top:52px;}
+.svc{position:relative;background:var(--surface);padding:40px 38px;transition:background .4s var(--ease),transform .5s var(--ease-out);transform-style:preserve-3d;}
+.svc::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,var(--teal),var(--teal-300));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-out);}
+.svc:hover{background:var(--paper);}
+.svc:hover::after{transform:scaleX(1);}
+.svc .top{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.svc svg.ic{width:34px;height:34px;flex:none;overflow:visible;}
+.svc .num{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--mist-700);transition:color .3s;}
+.svc:hover .num{color:var(--teal);}
+.svc h3{font-size:24px;color:var(--ink);}
+.svc p{font-size:16.5px;color:var(--slate);margin-top:12px;line-height:1.55;}
+.ic-stroke{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.ic-draw{stroke-dasharray:var(--len,120);stroke-dashoffset:0;transition:stroke-dashoffset .6s var(--ease-out);}
+.svc:hover .ic-draw{stroke-dashoffset:var(--len,120);animation:redraw .8s var(--ease-out) forwards;}
+@keyframes redraw{0%{stroke-dashoffset:var(--len,120);}100%{stroke-dashoffset:0;}}
+.ic-dot{fill:var(--teal);transform-origin:center;transition:transform .4s var(--ease-out);}
+.svc:hover .ic-dot{animation:dotPulse 1.4s var(--ease-out) infinite;}
+@media(max-width:760px){.svc-grid{grid-template-columns:1fr;}}
+@keyframes dotPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.5);}}
 
-  nav ul{
-    display:flex;
-    gap:1.6rem;
-    list-style:none;
-  }
-  nav a{
-    text-decoration:none;
-    font-size:0.92rem;
-    color:var(--ink);
-    opacity:.72;
-    position:relative;
-    padding-bottom:4px;
-    transition: opacity .25s var(--ease);
-  }
-  nav a::after{
-    content:"";
-    position:absolute;
-    left:0; right:100%;
-    bottom:0;
-    height:1px;
-    background: var(--accent);
-    transition: right .3s var(--ease);
-  }
-  nav a:hover{ opacity:1; }
-  nav a:hover::after{ right:0; }
+.svc-note{margin-top:40px;padding:30px 34px;border-left:3px solid var(--teal);background:var(--paper);border-radius:0 12px 12px 0;}
+.svc-note .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-600);margin-bottom:12px;}
+.svc-note p{font-size:19px;color:var(--ink);line-height:1.5;font-family:var(--serif);}
+.svc-note p .accent{font-style:italic;}
 
-  .cta-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:.5rem;
-    padding:0.6rem 1.15rem;
-    border:1px solid var(--ink);
-    border-radius:999px;
-    font-size:0.88rem;
-    font-weight:600;
-    text-decoration:none;
-    color:var(--ink);
-    background:transparent;
-    transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
-  }
-  .cta-btn:hover{
-    background:var(--ink);
-    color:var(--paper);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px -10px rgba(0,0,0,.35);
-  }
-  .cta-btn .dot{
-    width:7px; height:7px; border-radius:50%;
-    background: var(--accent);
-    transition: transform .35s var(--ease);
-  }
-  .cta-btn:hover .dot{ transform: scale(1.6); }
+/* ---------- HOW IT WORKS ---------- */
+.how{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px;}
+.how-card{position:relative;background:rgba(255,255,255,.04);border:1px solid #2b557a;border-radius:16px;padding:40px;transition:transform .5s var(--ease-out),border-color .4s,background .4s;transform-style:preserve-3d;}
+.how-card:hover{border-color:var(--teal-300);background:rgba(47,133,129,.07);}
+.how-card h3{font-size:27px;color:#fff;line-height:1.12;}
+.how-card .sub{color:#8fc0bd;font-family:var(--serif);font-style:italic;font-size:19px;margin-top:10px;}
+.how-card p{color:#c4d2dc;font-size:16.5px;margin-top:20px;line-height:1.6;}
+.how-card .deliv{margin-top:24px;padding-top:20px;border-top:1px solid #2b557a;font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#8fc0bd;line-height:1.6;}
+.how-card .deliv .arw{display:inline-block;transition:transform .4s var(--ease-out);}
+.how-card:hover .deliv .arw{transform:translateX(4px);}
+@media(max-width:760px){.how{grid-template-columns:1fr;}}
 
-  /* ---------- Reveal mechanics ---------- */
-  [data-reveal]{
-    opacity:0;
-    transform: translateY(28px);
-    transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
-    transition-delay: var(--reveal-delay, 0ms);
-  }
-  [data-reveal].in{
-    opacity:1;
-    transform: translateY(0);
-  }
+/* ---------- FIT ---------- */
+.fit-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;margin-top:52px;align-items:start;}
+.fit-card{border:1px solid var(--mist);border-radius:14px;padding:36px 38px;background:var(--surface);}
+.fit-card.good{background:var(--paper);}
+.fit-card .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;}
+.fit-card.good .h{color:var(--teal-600);}
+.fit-card.bad .h{color:var(--slate);}
+.fit-list{list-style:none;padding:0;margin:0;}
+.fit-list li{display:flex;gap:14px;padding:13px 0;border-top:1px dashed var(--mist);font-size:16.5px;line-height:1.45;color:var(--text);}
+.fit-list li:first-child{border-top:none;}
+.fit-list .mk{flex:none;margin-top:7px;}
+.fit-list .mk.dot{width:9px;height:9px;border-radius:50%;background:var(--teal);}
+.fit-list .mk.x{width:11px;height:11px;}
+.vert{margin-top:28px;padding-top:22px;border-top:1px solid var(--mist);}
+.vert .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:14px;}
+.vert .tags{display:flex;gap:10px;flex-wrap:wrap;}
+.vert .tag{font-size:14px;font-weight:500;color:var(--ink);padding:8px 15px;border:1px solid var(--mist-700);border-radius:999px;transition:transform .35s var(--ease-out),border-color .3s,color .3s;}
+.vert .tag:hover{transform:translateY(-2px);border-color:var(--teal);color:var(--teal-600);}
+@media(max-width:820px){.fit-grid{grid-template-columns:1fr;}}
 
-  /* ---------- Hero ---------- */
-  .hero{
-    padding: 7.5rem 0 6rem;
-    position:relative;
-  }
-  .eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:.55rem;
-    font-size:0.8rem;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:700;
-    margin-bottom:1.4rem;
-  }
-  .eyebrow::before{
-    content:"";
-    width:26px; height:1px;
-    background: var(--accent);
-  }
-  h1{
-    font-size: clamp(2.4rem, 6vw, 4.1rem);
-    line-height:1.08;
-    letter-spacing:-0.015em;
-    font-weight:700;
-    max-width: 16ch;
-  }
-  h1 em{
-    font-style:normal;
-    color: var(--accent);
-  }
-  .lede{
-    margin-top:1.6rem;
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    max-width: 56ch;
-    color: hsl(220 8% 28%);
-  }
-  .hero-actions{
-    margin-top:2.4rem;
-    display:flex;
-    flex-wrap:wrap;
-    gap:1rem;
-    align-items:center;
-  }
-  .ghost-link{
-    text-decoration:none;
-    color:var(--ink);
-    font-weight:600;
-    font-size:0.94rem;
-    border-bottom:1px solid var(--line-strong);
-    padding-bottom:3px;
-    transition: border-color .3s var(--ease), color .3s var(--ease);
-  }
-  .ghost-link:hover{ border-color: var(--accent); color:var(--accent); }
+/* ---------- CLOSER ---------- */
+.closer{padding:112px 0;}
+.closer .big{font-family:var(--serif);font-size:clamp(32px,4.6vw,56px);line-height:1.1;color:#fff;letter-spacing:-.02em;max-width:18ch;}
+.closer .big .accent{color:var(--teal-300);}
+.closer p{color:#c4d2dc;font-size:19px;margin-top:26px;max-width:56ch;line-height:1.6;}
+.closer .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;}
 
-  /* ---------- Section scaffolding ---------- */
-  section{ padding: 5.5rem 0; }
-  .section-head{ max-width: 60ch; margin-bottom: 2.6rem; }
-  .kicker{
-    font-size:0.78rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:700;
-    margin-bottom:0.8rem;
-  }
-  h2{
-    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-    letter-spacing:-0.01em;
-    font-weight:700;
-  }
-  .lead-text{
-    margin-top:0.9rem;
-    color: hsl(220 8% 30%);
-    font-size:1.05rem;
-    max-width: 64ch;
-  }
+/* ---------- FOOTER ---------- */
+.foot{background:var(--ink-900);padding:56px 0 40px;}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;}
+.foot .brand .name{color:#fff;font-family:var(--serif);font-weight:600;font-size:22px;}
+.foot .tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6f8a9d;margin-top:14px;}
+.foot .links{display:flex;gap:28px;}
+.foot .links a{color:#9fb4c2;text-decoration:none;font-size:14px;transition:color .2s;}
+.foot .links a:hover{color:#fff;}
+.foot .legal{margin-top:36px;padding-top:24px;border-top:1px solid #1d4566;font-family:var(--mono);font-size:11.5px;color:#5b7488;letter-spacing:.04em;}
 
-  hr.rule{
-    border:none;
-    height:1px;
-    background:var(--line);
-  }
-
-  /* ---------- Cards / grids ---------- */
-  .grid{
-    display:grid;
-    gap:1.1rem;
-  }
-  .grid.cols-2{ grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
-  .grid.cols-4{ grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
-
-  .card{
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:1.6rem;
-    background: hsl(40 24% 98% / 0.6);
-    transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
-    position:relative;
-    overflow:hidden;
-  }
-  .card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
-    opacity:0;
-    transition: opacity .45s var(--ease);
-  }
-  .card:hover{
-    transform: translateY(-5px);
-    border-color: var(--accent-line);
-    box-shadow: 0 22px 48px -28px rgba(20,22,26,.45);
-    background: hsl(40 24% 99% / 0.85);
-  }
-  .card:hover::before{ opacity:1; }
-  .card h3{
-    font-size:1.08rem;
-    font-weight:700;
-    margin-bottom:0.55rem;
-    position:relative;
-  }
-  .card p{
-    font-size:0.95rem;
-    color: hsl(220 8% 32%);
-    position:relative;
-  }
-  .card .num{
-    display:inline-block;
-    font-size:0.78rem;
-    font-weight:700;
-    letter-spacing:0.08em;
-    color:var(--accent);
-    margin-bottom:0.65rem;
-    position:relative;
-  }
-
-  /* values list */
-  .values{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 0;
-    border-top:1px solid var(--line);
-  }
-  .value{
-    padding: 1.6rem 1.4rem;
-    border-bottom:1px solid var(--line);
-    border-right:1px solid var(--line);
-    transition: background .4s var(--ease);
-  }
-  .value:hover{ background: var(--accent-soft); }
-  .value h3{ font-size:1rem; font-weight:700; margin-bottom:0.4rem; }
-  .value p{ font-size:0.92rem; color:hsl(220 8% 32%); }
-
-  /* fit / not-fit columns */
-  .fit-grid{
-    display:grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap:1.4rem;
-  }
-  @media (max-width: 760px){ .fit-grid{ grid-template-columns: 1fr; } }
-  .fit-card{
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:1.8rem;
-  }
-  .fit-card.muted{ background: hsl(40 14% 95%); border-style:dashed; }
-  .fit-card h3{ font-size:1rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:1rem; color:var(--accent); }
-  .fit-card ul{ list-style:none; display:grid; gap:0.6rem; }
-  .fit-card li{ font-size:0.96rem; padding-left:1.3rem; position:relative; color:hsl(220 8% 28%); }
-  .fit-card li::before{
-    content:"";
-    position:absolute; left:0; top:0.55em;
-    width:8px; height:1px;
-    background: var(--accent);
-  }
-
-  /* how it works */
-  .steps{ display:grid; gap:1.4rem; }
-  .step{
-    display:grid;
-    grid-template-columns: 64px 1fr;
-    gap:1.4rem;
-    align-items:start;
-    padding: 1.5rem 0;
-    border-bottom:1px solid var(--line);
-  }
-  .step:last-child{ border-bottom:none; }
-  .step .idx{
-    font-size:1.6rem;
-    font-weight:700;
-    color: var(--accent);
-    opacity:.55;
-    line-height:1;
-    transition: opacity .4s var(--ease), transform .4s var(--ease);
-  }
-  .step:hover .idx{ opacity:1; transform: translateX(4px); }
-  .step h3{ font-size:1.1rem; font-weight:700; margin-bottom:0.4rem; }
-  .step p{ color:hsl(220 8% 30%); font-size:0.97rem; max-width:62ch; }
-  .step .pull{
-    margin-top:0.6rem;
-    font-weight:700;
-    color: var(--ink);
-    border-left:2px solid var(--accent);
-    padding-left:0.8rem;
-    font-size:0.95rem;
-  }
-
-  /* CTA band */
-  .cta-band{
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding: 3rem 2.4rem;
-    text-align:center;
-    background: linear-gradient(180deg, hsl(40 24% 98%), hsl(40 24% 95%));
-    position:relative;
-    overflow:hidden;
-  }
-  .cta-band::after{
-    content:"";
-    position:absolute;
-    inset:-40% -10% auto -10%;
-    height:160%;
-    background: radial-gradient(circle, var(--accent-soft), transparent 65%);
-    animation: drift 30s var(--ease) infinite alternate;
-    pointer-events:none;
-  }
-  .cta-band h2{ position:relative; }
-  .cta-band p{ position:relative; max-width:54ch; margin: 0.9rem auto 1.8rem; color:hsl(220 8% 30%); }
-  .cta-band .actions{ position:relative; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-
-  footer{
-    border-top:1px solid var(--line);
-    padding: 2.6rem 0 3.2rem;
-    font-size:0.86rem;
-    color: hsl(220 8% 40%);
-  }
-  .foot-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:1rem;
-  }
-  .foot-brand{ display:flex; align-items:center; gap:.5rem; color:var(--ink); font-weight:600; }
-  .foot-brand svg{ width:22px; height:22px; }
-
-  @media (max-width: 720px){
-    nav ul{ display:none; }
-    .brand span{ display:none; }
-    .nav{ gap:0.75rem; }
-  }
-
-  ::selection{ background: var(--accent-soft); color:var(--ink); }
-
-  @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior:auto !important;
-    }
-    [data-reveal]{ opacity:1; transform:none; }
-  }
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-delay:0ms!important;transition-duration:.01ms!important;}
+  .rv,.hero .eyebrow,.hero .lede,.hero .cta,.hero-foot{opacity:1!important;transform:none!important;}
+  .line .wi{transform:none!important;}
+  .hero-canvas,.band-canvas{display:none;}
+}
 </style>
 </head>
-<body>
+<body class="no-js">
 
-  <div class="field" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="gridlines" aria-hidden="true"></div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <div class="brand-text">
+        <span class="name">App<svg class="point logo-mark" viewBox="0 0 64 64" width="22" height="22"><circle class="ring" cx="32" cy="32" r="26" stroke-width="6" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/><line class="tick" x1="32" y1="2" x2="32" y2="10"/><line class="tick" x1="32" y1="54" x2="32" y2="62"/><line class="tick" x1="2" y1="32" x2="10" y2="32"/><line class="tick" x1="54" y1="32" x2="62" y2="32"/><circle class="dot" cx="32" cy="32" r="10"/></svg>site</span>
+        <span class="tagline">precise <span style="color:var(--teal)">solutions</span></span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#different">Our Difference</a>
+      <a href="#services">What it is</a>
+      <a href="#how">How it works</a>
+      <a href="#fit">Who it's for</a>
+      <a class="btn btn-teal" href="#contact"><span class="lab">Talk to an engineer</span></a>
+    </div>
+  </div>
+</nav>
 
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top">
-        <svg viewBox="0 0 240 300" role="img" aria-label="Apposite mark">
-          <circle cx="120" cy="112" r="76" fill="none" stroke="currentColor" stroke-width="9"/>
-          <path fill-rule="evenodd" fill="currentColor" d="M120 54 L168 196 L150 196 L139.5 165 L100.5 165 L90 196 L72 196 Z M120 92 L107 154 L133 154 Z"/>
-        </svg>
-        <span>Apposite Solutions</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#different">Why us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#fit">Who we serve</a></li>
+<!-- HERO -->
+<header class="hero" id="top" data-screen-label="Hero">
+  <canvas class="hero-canvas" id="heroField" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow">Managed IT · Cloud · Security · Web &amp; App layer</div>
+    <h1 id="heroHead">
+      <span class="line"><span class="li">Engineers who do</span></span>
+      <span class="line"><span class="li">managed services.</span></span>
+    </h1>
+    <p class="lede">Most IT companies are help desks that resell software. We <b>embed a senior engineer</b> in your business — someone who can support your systems <i>and</i> fix them. Your cloud, your security, even wiring your website into your inventory backend.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#contact"><span class="lab">Talk to an engineer <svg class="arw" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a class="btn btn-ghost" href="#how"><span class="lab">See how it works</span></a>
+    </div>
+    <div class="hero-foot">
+      <div class="stat"><div class="k aos-k">App<svg class="point" viewBox="0 0 64 64" width="22" height="22"><circle class="ring" cx="32" cy="32" r="26" stroke-width="7"/><circle class="dot" cx="32" cy="32" r="11"/></svg>Site</div><div class="l">The app &amp; web layer is in scope — not "not our job."</div></div>
+      <div class="stat"><div class="k">10–250</div><div class="l">Seat organizations we're built to serve.</div></div>
+      <div class="stat"><div class="k">Embedded</div><div class="l">Forward-deployed, accountable, on the ground.</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- DIFFERENT -->
+<section class="band tinted" id="different" data-screen-label="What makes us different">
+  <div class="wrap">
+    <div class="sec-eyebrow eyebrow rv">What makes us different</div>
+    <div class="diff-quote rv" style="--i:1">Most providers staff technicians and resell tools. We staff engineers — so the people supporting you can also <span class="accent">build.</span></div>
+    <div class="diff-split rv" style="--i:2" id="diffSplit">
+      <div class="diff-side them">
+        <div class="h">A traditional MSP</div>
+        <p>Reads scripts. Resells software. Defends the edges of a contract. Calls anything past the help desk "not our job" — and closes the ticket.</p>
+      </div>
+      <div class="diff-side us">
+        <div class="h">Apposite</div>
+        <p>Embeds a senior engineer who knows your systems and owns outcomes across the stack — integrate platforms, harden security, fix the root cause. Not close a ticket.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="band" id="services" data-screen-label="Services">
+  <div class="wrap">
+    <div class="lead-row">
+      <div>
+        <div class="sec-eyebrow eyebrow rv">Services</div>
+        <h2 class="sec-title rv" style="--i:1">The embedded engineer is the product. This is what they deliver.</h2>
+      </div>
+      <p class="rv" style="--i:2">One person who knows your business, reachable and accountable — across infrastructure, cloud, security, and the application layer.</p>
+    </div>
+
+    <div class="svc-grid rv" style="--i:1">
+      <div class="svc">
+        <div class="top">
+          <svg class="ic" viewBox="0 0 24 24"><path class="ic-stroke ic-draw" style="--len:64" d="M9 4 H6 a1 1 0 0 0 -1 1 V19 a1 1 0 0 0 1 1 H9"/><path class="ic-stroke ic-draw" style="--len:64" d="M15 4 H18 a1 1 0 0 1 1 1 V19 a1 1 0 0 1 -1 1 H15"/><circle class="ic-dot" cx="12" cy="12" r="2.6"/></svg>
+          <span class="num">01</span>
+        </div>
+        <h3>Embedded Engineering</h3>
+        <p>A senior engineer who knows your systems and owns outcomes across the stack — from infrastructure to the application and web layer.</p>
+      </div>
+      <div class="svc">
+        <div class="top">
+          <svg class="ic" viewBox="0 0 24 24"><polyline class="ic-stroke ic-draw" style="--len:40" points="4,7 9,12 13,10 19,17"/><path class="ic-stroke ic-draw" style="--len:14" d="M19 17 V12 M19 17 H14"/><circle class="ic-dot" cx="4" cy="7" r="2.4"/></svg>
+          <span class="num">02</span>
+        </div>
+        <h3>Managed IT &amp; Support</h3>
+        <p>Day-to-day operations, run by people who can also build. Triage handles the commodity requests; your engineer owns the hard problems.</p>
+      </div>
+      <div class="svc">
+        <div class="top">
+          <svg class="ic" viewBox="0 0 24 24"><path class="ic-stroke ic-draw" style="--len:52" d="M7.5 18 a4.5 4.5 0 0 1 -.4 -8.98 A5.5 5.5 0 0 1 17.6 9.2 a3.9 3.9 0 0 1 -.1 8.8 Z"/><circle class="ic-dot" cx="12" cy="13.5" r="2.4"/></svg>
+          <span class="num">03</span>
+        </div>
+        <h3>Cloud</h3>
+        <p>Architecture, migration, and ongoing operations — designed for how your business actually runs, then kept running.</p>
+      </div>
+      <div class="svc">
+        <div class="top">
+          <svg class="ic" viewBox="0 0 24 24"><path class="ic-stroke ic-draw" style="--len:60" d="M12 3 L19 6 V11 C19 16 15.5 19 12 21 C8.5 19 5 16 5 11 V6 Z"/><circle class="ic-dot" cx="12" cy="11.5" r="2.6"/></svg>
+          <span class="num">04</span>
+        </div>
+        <h3>Security Strategy &amp; Posture</h3>
+        <p>Risk assessment, hardening, and a defensible roadmap — explained in plain terms, not a compliance checklist.</p>
+      </div>
+    </div>
+
+    <div class="svc-note rv" style="--i:1">
+      <div class="h">What sets us apart in practice</div>
+      <p>Connecting a hosted storefront to a vendor inventory backend. Rebuilding the layout on a legacy CMS. Work a traditional MSP calls "not our job" — <span class="accent">we call it Tuesday.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="band dark" id="how" data-screen-label="How it works">
+  <canvas class="band-canvas" id="howField" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="sec-eyebrow eyebrow rv" style="color:var(--teal-300)">How it works</div>
+    <h2 class="sec-title rv" style="--i:1;color:#fff">Your engineer doesn't reset passwords.</h2>
+    <div class="how">
+      <div class="how-card rv" style="--i:2">
+        <h3>They build the system so you stop having to ask.</h3>
+        <div class="sub">Falling ticket volume is a deliverable.</div>
+        <p>A thin triage layer handles commodity requests — password resets, printer issues — through self-service and automation. Your embedded engineer owns the account and the hard problems, and engineers away recurring issues by fixing root causes.</p>
+        <div class="deliv"><span class="arw">→</span> &nbsp;Fewer tickets over time, by design — not by accident.</div>
+      </div>
+      <div class="how-card rv" style="--i:3">
+        <h3>We fix and connect what you have.</h3>
+        <div class="sub">Net-new is scoped separately.</div>
+        <p>Bounded fixes, integrations, and configuration improvements are in-scope embedded work. Net-new applications or maintained codebases are scoped under a separate statement of work.</p>
+        <div class="deliv"><span class="arw">→</span> &nbsp;Keeps us able to say yes — on terms that don't compromise the work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section class="band tinted" id="fit" data-screen-label="Who it's for">
+  <div class="wrap">
+    <div class="sec-eyebrow eyebrow rv">Who it's for</div>
+    <h2 class="sec-title rv" style="--i:1">A partner that can build — not just maintain.</h2>
+    <div class="fit-grid">
+      <div class="fit-card good rv" style="--i:2">
+        <div class="h">Best fit</div>
+        <ul class="fit-list">
+          <li><span class="mk dot"></span><span>10–250 seat organizations with real IT pain and no strong internal team.</span></li>
+          <li><span class="mk dot"></span><span>Multi-entity associations needing coordination across members.</span></li>
+          <li><span class="mk dot"></span><span>Leadership fed up with help-desk runaround who want a partner that can build.</span></li>
         </ul>
-      </nav>
-      <a class="cta-btn" href="mailto:hello@apposite.solutions"><span class="dot"></span> Get in touch</a>
+          <div class="vert">
+          <div class="h">Verticals we know</div>
+          <div class="tags"><span class="tag">Small businesses</span><span class="tag">Member &amp; industry associations</span><span class="tag">Large enterprises</span><span class="tag">Non-profits</span></div>
+        </div>
+      </div>
+      <div class="fit-card bad rv" style="--i:3">
+        <div class="h">Not for</div>
+        <ul class="fit-list">
+          <li><svg class="mk x" viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#5a6b78" stroke-width="1.6" stroke-linecap="round"/></svg><span>Pure price shoppers.</span></li>
+          <li><svg class="mk x" viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#5a6b78" stroke-width="1.6" stroke-linecap="round"/></svg><span>Anyone who wants a hands-off portal and a per-seat invoice.</span></li>
+        </ul>
+        <p style="font-size:15px;color:var(--slate);margin-top:18px;line-height:1.55;">There are plenty of providers built for that. We're not one of them.</p>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow" data-reveal>Engineering-led managed services</p>
-        <h1 data-reveal>Engineers who do <em>managed services.</em></h1>
-        <p class="lede" data-reveal>
-          Most IT companies are help desks that resell software. We're engineers who do managed services —
-          we embed someone in your business who can support your systems <em>and</em> fix them, whether
-          that's your cloud, your security, or wiring your website into your inventory backend.
-        </p>
-        <div class="hero-actions" data-reveal>
-          <a class="cta-btn" href="mailto:hello@apposite.solutions"><span class="dot"></span> Start a conversation</a>
-          <a class="ghost-link" href="#different">See what makes us different ↓</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="mission">
-      <div class="wrap">
-        <div class="grid cols-2">
-          <div data-reveal>
-            <p class="kicker">Mission</p>
-            <h2>IT, run the way it should be.</h2>
-            <p class="lead-text">
-              We're engineers who run IT the way it should be run — embedded in our clients' operations,
-              owning real problems across infrastructure, cloud, security, and the application layer.
-              Managed services is how we stay close; engineering is what clients are actually paying for.
-            </p>
-          </div>
-          <div data-reveal>
-            <p class="kicker">Vision</p>
-            <h2>Real engineering talent, on the ground.</h2>
-            <p class="lead-text">
-              Small and mid-sized organizations getting genuine engineering talent on the ground — not a
-              remote help desk reading scripts, and not a vendor defending the edges of a contract.
-              No one told <em>"that's just how it works"</em> by a provider who never learned their business.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="different">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">What makes us different</p>
-          <h2>We staff engineers. Most providers staff technicians.</h2>
-          <p class="lead-text">
-            Most IT providers staff technicians and resell tools. We staff engineers and embed them in your
-            operation — so the people supporting you can also build: integrate systems, fix platforms,
-            harden security, and own the outcome instead of closing a ticket.
-          </p>
-        </div>
-        <div class="grid cols-2">
-          <div class="card" data-reveal>
-            <p class="num">THE LINE</p>
-            <h3>For organizations whose problems keep crossing the line</h3>
-            <p>Between "IT" and "needs an actual engineer" — that's exactly where we live, and where most providers quietly stop helping.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">IN PRACTICE</p>
-            <h3>Work a traditional MSP calls "not our job"</h3>
-            <p>Connecting a Squarespace storefront to a vendor inventory backend. Rebuilding the layout on a legacy CMS. We call it Tuesday.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Services</p>
-          <h2>The embedded engineer is the product.</h2>
-          <p class="lead-text">The categories below are what they deliver — across the full stack, not just the parts that are easy to staff.</p>
-        </div>
-        <div class="grid cols-4">
-          <div class="card" data-reveal>
-            <p class="num">01</p>
-            <h3>Embedded Engineering</h3>
-            <p>A senior engineer who knows your systems and owns outcomes across the stack — from infrastructure to the application and web layer.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">02</p>
-            <h3>Managed IT &amp; Support</h3>
-            <p>Day-to-day operations, run by people who can also build.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">03</p>
-            <h3>Cloud</h3>
-            <p>Architecture, migration, and ongoing operations.</p>
-          </div>
-          <div class="card" data-reveal>
-            <p class="num">04</p>
-            <h3>Security Strategy &amp; Posture</h3>
-            <p>Risk assessment, hardening, and a defensible roadmap.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="values">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Core values</p>
-          <h2>Apt, by name.</h2>
-        </div>
-        <div class="values" data-reveal>
-          <div class="value">
-            <h3>Engineers, not a queue.</h3>
-            <p>The person who supports you can also build and fix. That's the whole point.</p>
-          </div>
-          <div class="value">
-            <h3>Proximity is the product.</h3>
-            <p>Forward-deployed, embedded, accountable. Distance is what we replace.</p>
-          </div>
-          <div class="value">
-            <h3>Question the inherited default.</h3>
-            <p>"That's how it's always been done" is where the conversation starts, never where it ends.</p>
-          </div>
-          <div class="value">
-            <h3>Apt, by name.</h3>
-            <p>The right fix for this context — not the templated one.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="how">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">How it works</p>
-          <h2>Falling ticket volume is a deliverable, not an accident.</h2>
-        </div>
-        <div class="steps">
-          <div class="step" data-reveal>
-            <span class="idx">01</span>
-            <div>
-              <h3>Your engineer doesn't reset passwords.</h3>
-              <p>A thin triage layer handles commodity requests — password resets, printer issues — through self-service and automation. Your embedded engineer owns the account and the hard problems, and engineers away recurring issues by fixing root causes.</p>
-              <p class="pull">They build the system so you stop having to ask.</p>
-            </div>
-          </div>
-          <div class="step" data-reveal>
-            <span class="idx">02</span>
-            <div>
-              <h3>We fix and connect what you have.</h3>
-              <p>Bounded fixes, integrations, and configuration improvements are in-scope embedded work. Net-new applications or maintained codebases are scoped separately — on terms that don't compromise the work.</p>
-              <p class="pull">We build net-new under a separate statement of work.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="fit">
-      <div class="wrap">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Who we're for</p>
-          <h2>Fit matters more than fees.</h2>
-        </div>
-        <div class="fit-grid" data-reveal>
-          <div class="fit-card">
-            <h3>Best fit</h3>
-            <ul>
-              <li>10–250 seat organizations with real IT pain and no strong internal team</li>
-              <li>Multi-entity associations needing coordination across members</li>
-              <li>Leadership fed up with help-desk runaround who want a partner that can build, not just maintain</li>
-              <li>Verticals we know well: trades businesses, member &amp; industry associations</li>
-            </ul>
-          </div>
-          <div class="fit-card muted">
-            <h3>Not a fit</h3>
-            <ul>
-              <li>Pure price shoppers</li>
-              <li>Anyone who wants a hands-off portal and a per-seat invoice</li>
-              <li>There are plenty of providers built for that — we're not one of them</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="cta-band" data-reveal>
-          <p class="kicker">Let's talk</p>
-          <h2>Bring us the problem that keeps crossing the line.</h2>
-          <p>For trades businesses, associations, and SMBs underserved by traditional MSPs — we deliver managed IT, cloud, and security through forward-deployed engineers who support <em>and</em> build.</p>
-          <div class="actions">
-            <a class="cta-btn" href="mailto:hello@apposite.solutions"><span class="dot"></span> Email hello@apposite.solutions</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap foot-row">
-      <div class="foot-brand">
-        <svg viewBox="0 0 240 300" role="img" aria-hidden="true">
-          <circle cx="120" cy="112" r="76" fill="none" stroke="currentColor" stroke-width="9"/>
-          <path fill-rule="evenodd" fill="currentColor" d="M120 54 L168 196 L150 196 L139.5 165 L100.5 165 L90 196 L72 196 Z M120 92 L107 154 L133 154 Z"/>
-        </svg>
-        Apposite Solutions
-      </div>
-      <span>Engineers who do managed services.</span>
-      <span>&copy; <span id="year"></span> Apposite Solutions</span>
+<!-- CLOSER -->
+<section class="band dark closer" id="contact" data-screen-label="Contact">
+  <canvas class="band-canvas" id="closeField" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="sec-eyebrow eyebrow rv" style="color:var(--teal-300)">Get started</div>
+    <div class="big rv" style="--i:1">When your problems keep crossing the line between "IT" and "needs an actual engineer" — <span class="accent">that's us.</span></div>
+    <p class="rv" style="--i:2">Tell us where it hurts. We'll tell you, plainly, whether we're the right fit — and what an embedded engineer would own in your first ninety days.</p>
+    <div class="cta rv" style="--i:3">
+      <a class="btn btn-tint" data-contact="email" href="mailto:hello@apposite.io"><span class="lab"><span data-contact-text="email">hello@apposite.io</span> <svg class="arw" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <!-- <a class="btn btn-line" data-contact="phone" href="tel:+15550142230"><span class="lab"><span data-contact-text="phone">+1 (555) 014‑2230</span></span></a> -->
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot" data-screen-label="Footer">
+  <div class="wrap foot-in">
+    <div>
+      <div class="brand" style="display:flex;align-items:center;gap:11px;">
+        <span class="name">App<svg class="point" viewBox="0 0 64 64" width="20" height="20" style="vertical-align:middle;position:relative;top:-1px;"><circle class="ring" cx="32" cy="32" r="26" stroke-width="6" style="stroke:#fff"/><circle class="dot" cx="32" cy="32" r="10"/></svg>site</span>
+      </div>
+      <div class="tag">precise <span style="color:#8fc0bd">solutions</span></div>
+    </div>
+    <div class="links">
+      <a href="#different">Our Difference</a>
+      <a href="#services">What it is</a>
+      <a href="#how">How it works</a>
+      <a href="#fit">Who it's for</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="wrap"><div class="legal">© <span data-year>2026</span> <span data-company>Apposite Solutions</span> · Engineers who do managed services · Forward-deployed, embedded, accountable.</div></div>
+</footer>
+
+<!-- Edit your contact details, social links, and site URL in config.js -->
+<script src="config.js"></script>
+<script>
+/* Wire editable config.js values into the page (links + text). */
+(function(){
+  "use strict";
+  var c = (window.APPOSITE_CONFIG) || {};
+  var set = function(sel, fn){ document.querySelectorAll(sel).forEach(fn); };
+
+  if(c.email){
+    set('[data-contact="email"]', function(a){ a.setAttribute('href','mailto:'+c.email); });
+    set('[data-contact-text="email"]', function(el){ el.textContent = c.email; });
+  }
+  /* if(c.phoneHref || c.phone){
+    set('[data-contact="phone"]', function(a){ a.setAttribute('href','tel:'+(c.phoneHref||c.phone).replace(/[^+\d]/g,'')); });
+    if(c.phone) set('[data-contact-text="phone"]', function(el){ el.textContent = c.phone; });
+  } */
+  if(c.company) set('[data-company]', function(el){ el.textContent = c.company; });
+  set('[data-year]', function(el){ el.textContent = new Date().getFullYear(); });
+
+  // Optional social links: any [data-social="linkedin"] etc. is shown only if a URL exists.
+  Object.keys(c.social||{}).forEach(function(k){
+    set('[data-social="'+k+'"]', function(a){
+      if(c.social[k]){ a.setAttribute('href', c.social[k]); a.style.display=''; }
+      else { a.style.display='none'; }
+    });
+  });
+})();
+</script>
 
 <script>
 (function(){
-  // ---- Per-load tasteful randomization -------------------------------
-  // Small, bounded variation: accent hue, motion style, animation timing
-  // and reveal order/stagger. Never enough to look unstable.
+  "use strict";
+  var root = document.body;
+  root.classList.remove('no-js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
 
-  var root = document.documentElement;
+  /* ---------- Nav shadow on scroll ---------- */
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  // 1) Subtle accent hue drift around a cool graphite-blue base (190–230)
-  var baseHue = 210;
-  var hue = baseHue + (Math.random() * 28 - 14); // ±14°
-  var sat = 14 + Math.random() * 10;             // 14–24%
-  var light = 38 + Math.random() * 10;           // 38–48%
-  root.style.setProperty('--accent-h', hue.toFixed(1));
-  root.style.setProperty('--accent-s', sat.toFixed(1) + '%');
-  root.style.setProperty('--accent-l', light.toFixed(1) + '%');
+  /* ---------- Hero entrance (CSS keyframes survive background tabs) ---------- */
+  document.querySelector('.hero').classList.add('go');
+  // Fallback: guarantee the hero reaches its final visible state even if the
+  // animation timeline is frozen (background tab) or never starts.
+  setTimeout(function(){ document.querySelector('.hero').classList.add('shown'); }, 1400);
 
-  // 2) Pick one of two understated ambient motion styles
-  var motionStyles = ['drift', 'grid'];
-  var motion = motionStyles[Math.floor(Math.random() * motionStyles.length)];
-  document.body.setAttribute('data-motion', motion);
-
-  // 3) Randomize ambient drift timing within a calm range
-  var driftDur = (32 + Math.random() * 18).toFixed(1) + 's';
-  root.style.setProperty('--drift-dur', driftDur);
-  root.style.setProperty('--d1', '-' + (Math.random() * 10).toFixed(1) + 's');
-  root.style.setProperty('--d2', '-' + (6 + Math.random() * 10).toFixed(1) + 's');
-  root.style.setProperty('--d3', '-' + (12 + Math.random() * 14).toFixed(1) + 's');
-
-  // 4) Slightly vary the base reveal duration (within a tasteful band)
-  var dur = (0.6 + Math.random() * 0.3).toFixed(2) + 's';
-  root.style.setProperty('--dur-base', dur);
-
-  // ---- Reveal-on-scroll with randomized-but-bounded stagger ----------
-  var groups = {};
-  document.querySelectorAll('[data-reveal]').forEach(function(el){
-    var section = el.closest('section') || el.closest('header') || document.body;
-    var key = section;
-    if (!groups.hasOwnProperty(key)) groups[key] = [];
-    groups[key] ? null : (groups[key] = []);
-  });
-
-  // Build per-section ordered lists, then assign a gently randomized stagger
-  var sections = Array.from(document.querySelectorAll('section, header'));
-  sections.forEach(function(section){
-    var items = Array.from(section.querySelectorAll('[data-reveal]'));
-    if (!items.length) return;
-
-    // Subtle entrance-order variation: mostly top-to-bottom, occasionally
-    // swap two adjacent items so the reveal order isn't identical every time.
-    if (items.length > 2 && Math.random() < 0.5) {
-      var i = Math.floor(Math.random() * (items.length - 1));
-      var a = items[i], b = items[i+1];
-      items[i] = b; items[i+1] = a;
-    }
-
-    var baseStep = 90 + Math.random() * 70; // 90–160ms between items
-    items.forEach(function(el, idx){
-      var jitter = Math.random() * 60 - 30; // ±30ms
-      var delay = Math.max(0, idx * baseStep + jitter);
-      el.style.setProperty('--reveal-delay', delay.toFixed(0) + 'ms');
-    });
-  });
-
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-
-  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
-
-  // ---- Subtle parallax on the ambient field (mouse + scroll) ---------
-  var field = document.querySelector('.field');
-  var ticking = false;
-  function updateParallax(x, y){
-    if (!field) return;
-    field.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+  /* ---------- Scroll reveal (robust) ---------- */
+  var revealAll = function(){ document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); }); 
+    var ds = document.getElementById('diffSplit'); if(ds) ds.classList.add('in'); };
+  if(reduce || !('IntersectionObserver' in window)){ revealAll(); }
+  else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+    var ds = document.getElementById('diffSplit'); if(ds) io.observe(ds);
+    // safety: reveal anything still hidden after 3.2s
+    setTimeout(function(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){
+      if(el.getBoundingClientRect().top < window.innerHeight * 1.1) el.classList.add('in','shown');
+    }); }, 3200);
   }
-  window.addEventListener('mousemove', function(e){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      var nx = (e.clientX / window.innerWidth - 0.5) * 16;
-      var ny = (e.clientY / window.innerHeight - 0.5) * 16;
-      updateParallax(nx, ny);
-      ticking = false;
+
+  /* ---------- Smooth anchor (offset for sticky nav) ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var id = a.getAttribute('href'); if(id.length<2) return;
+      var t = document.querySelector(id); if(!t) return;
+      ev.preventDefault();
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth' });
     });
   });
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  /* ---------- 3D tilt on cards ---------- */
+  if(canHover && !reduce){
+    document.querySelectorAll('.svc, .how-card').forEach(function(card){
+      var raf=null, tx=0, ty=0;
+      card.style.willChange='transform';
+      card.addEventListener('pointermove', function(e){
+        var r=card.getBoundingClientRect();
+        var px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+        tx=py*-4; ty=px*4;
+        if(!raf) raf=requestAnimationFrame(function(){
+          card.style.transform='perspective(900px) rotateX('+tx+'deg) rotateY('+ty+'deg) translateY(-3px)';
+          raf=null;
+        });
+      });
+      card.addEventListener('pointerleave', function(){ card.style.transform=''; });
+    });
+  }
+
+  if(reduce) return; // skip canvases entirely
+
+  /* ============================================================
+     CANVAS 1 — Hero "Precision Field"
+     A grid of points that brighten toward the cursor; an eased
+     teal crosshair locks onto the nearest grid node.
+     ============================================================ */
+  function PrecisionField(canvas){
+    var ctx = canvas.getContext('2d'); var dpr = Math.min(window.devicePixelRatio||1, 2);
+    var W=0,H=0, pts=[], gap=46, mouse={x:-9999,y:-9999,active:false}, cross={x:0,y:0}, parX=0,parY=0, running=false, rafId=null;
+    function build(){
+      var r=canvas.getBoundingClientRect(); W=r.width; H=r.height;
+      canvas.width=W*dpr; canvas.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      pts=[]; var cols=Math.ceil(W/gap)+2, rows=Math.ceil(H/gap)+2;
+      for(var i=0;i<cols;i++) for(var j=0;j<rows;j++){ pts.push({x:i*gap-gap, y:j*gap-gap}); }
+      cross.x=W/2; cross.y=H/2;
+    }
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      // parallax target
+      var pgx = mouse.active ? (mouse.x-W/2)*0.012 : 0;
+      var pgy = mouse.active ? (mouse.y-H/2)*0.012 : 0;
+      parX += (pgx-parX)*0.06; parY += (pgy-parY)*0.06;
+      // nearest node to cursor for the crosshair lock
+      var bestX=W/2, bestY=H/2;
+      if(mouse.active){ bestX=Math.round((mouse.x-parX)/gap)*gap; bestY=Math.round((mouse.y-parY)/gap)*gap; }
+      cross.x += (bestX-cross.x)*0.18; cross.y += (bestY-cross.y)*0.18;
+      var R=150;
+      for(var k=0;k<pts.length;k++){
+        var px=pts[k].x+parX, py=pts[k].y+parY;
+        var rad=1.2, a=0.16, teal=0;
+        if(mouse.active){
+          var dx=px-mouse.x, dy=py-mouse.y, d=Math.sqrt(dx*dx+dy*dy);
+          if(d<R){ var t=1-d/R; rad=1.2+t*2.6; a=0.16+t*0.5; teal=t; }
+        }
+        if(teal>0.02){
+          ctx.fillStyle='rgba('+Math.round(19+(47-19)*teal)+','+Math.round(49+(133-49)*teal)+','+Math.round(76+(129-76)*teal)+','+a+')';
+        } else { ctx.fillStyle='rgba(19,49,76,'+a+')'; }
+        ctx.beginPath(); ctx.arc(px,py,rad,0,6.2832); ctx.fill();
+      }
+      // crosshair lock-on
+      if(mouse.active){
+        var cx=cross.x+parX, cy=cross.y+parY;
+        ctx.strokeStyle='rgba(47,133,129,0.55)'; ctx.lineWidth=1.4; ctx.lineCap='round';
+        ctx.beginPath();
+        ctx.moveTo(cx-13,cy); ctx.lineTo(cx-5,cy); ctx.moveTo(cx+5,cy); ctx.lineTo(cx+13,cy);
+        ctx.moveTo(cx,cy-13); ctx.lineTo(cx,cy-5); ctx.moveTo(cx,cy+5); ctx.lineTo(cx,cy+13);
+        ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx,cy,7,0,6.2832); ctx.stroke();
+        ctx.fillStyle='rgba(47,133,129,0.9)'; ctx.beginPath(); ctx.arc(cx,cy,2.2,0,6.2832); ctx.fill();
+      }
+      rafId=requestAnimationFrame(frame);
+    }
+    function start(){ if(running) return; running=true; frame(); }
+    function stop(){ running=false; if(rafId) cancelAnimationFrame(rafId); rafId=null; }
+    var host = canvas.parentElement;
+    host.addEventListener('pointermove', function(e){ var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true; });
+    host.addEventListener('pointerleave', function(){ mouse.active=false; });
+    window.addEventListener('resize', build);
+    build(); start();
+    new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); },{threshold:0.01}).observe(canvas);
+  }
+
+  /* ============================================================
+     CANVAS 2 — Constellation (dark sections)
+     Drifting nodes; links form between nodes (and to cursor)
+     within a radius — quiet sense of depth.
+     ============================================================ */
+  function Constellation(canvas, density){
+    var ctx=canvas.getContext('2d'); var dpr=Math.min(window.devicePixelRatio||1,2);
+    var W=0,H=0, nodes=[], mouse={x:-9999,y:-9999,active:false}, running=false, rafId=null;
+    function build(){
+      var r=canvas.getBoundingClientRect(); W=r.width; H=r.height;
+      canvas.width=W*dpr; canvas.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      var count=Math.max(24, Math.round(W*H/(density||16000)));
+      nodes=[];
+      for(var i=0;i<count;i++){ nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*0.22,vy:(Math.random()-.5)*0.22,r:Math.random()*1.4+0.7}); }
+    }
+    function frame(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<nodes.length;i++){
+        var n=nodes[i]; n.x+=n.vx; n.y+=n.vy;
+        if(n.x<0||n.x>W) n.vx*=-1; if(n.y<0||n.y>H) n.vy*=-1;
+        ctx.fillStyle='rgba(143,192,189,0.5)'; ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,6.2832); ctx.fill();
+      }
+      // links between near nodes
+      for(var a=0;a<nodes.length;a++){
+        for(var b=a+1;b<nodes.length;b++){
+          var dx=nodes[a].x-nodes[b].x, dy=nodes[a].y-nodes[b].y, d=dx*dx+dy*dy;
+          if(d<11000){ var al=(1-d/11000)*0.16; ctx.strokeStyle='rgba(143,192,189,'+al+')'; ctx.lineWidth=0.7; ctx.beginPath(); ctx.moveTo(nodes[a].x,nodes[a].y); ctx.lineTo(nodes[b].x,nodes[b].y); ctx.stroke(); }
+        }
+      }
+      // links to cursor
+      if(mouse.active){
+        for(var c=0;c<nodes.length;c++){
+          var mx=nodes[c].x-mouse.x, my=nodes[c].y-mouse.y, md=mx*mx+my*my;
+          if(md<26000){ var ma=(1-md/26000)*0.5; ctx.strokeStyle='rgba(47,133,129,'+ma+')'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(nodes[c].x,nodes[c].y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke(); }
+        }
+        ctx.fillStyle='rgba(47,133,129,0.9)'; ctx.beginPath(); ctx.arc(mouse.x,mouse.y,2.6,0,6.2832); ctx.fill();
+      }
+      rafId=requestAnimationFrame(frame);
+    }
+    function start(){ if(running) return; running=true; frame(); }
+    function stop(){ running=false; if(rafId) cancelAnimationFrame(rafId); rafId=null; }
+    var host=canvas.parentElement;
+    host.addEventListener('pointermove', function(e){ var r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true; });
+    host.addEventListener('pointerleave', function(){ mouse.active=false; });
+    window.addEventListener('resize', build);
+    build(); start();
+    new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); },{threshold:0.01}).observe(canvas);
+  }
+
+  PrecisionField(document.getElementById('heroField'));
+  Constellation(document.getElementById('howField'), 15000);
+  Constellation(document.getElementById('closeField'), 17000);
 })();
 </script>
 </body>
