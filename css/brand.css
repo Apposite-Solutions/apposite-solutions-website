@@ -1,0 +1,125 @@
+/* ============================================================
+   APPOSITE SOLUTIONS — Brand foundations
+   Shared tokens, type system, helpers
+   ============================================================ */
+
+:root {
+  /* --- Color --- */
+  --ink:        #13314c; /* Harbor Navy — primary brand */
+  --ink-900:    #0d2438; /* deeper, for full-bleed dark */
+  --ink-700:    #1d4566;
+  --teal:       #2f8581; /* Signal Teal — accent */
+  --teal-600:   #287571;
+  --teal-300:   #8fc0bd;
+  --paper:      #f4f6f7; /* cool off-white page */
+  --surface:    #ffffff;
+  --mist:       #e3e9ec; /* light surface / hairlines */
+  --mist-700:   #cdd6db;
+  --slate:      #5a6b78; /* secondary text */
+  --text:       #15222c; /* body near-black */
+
+  /* --- Type --- */
+  --serif: "Spectral", Georgia, "Times New Roman", serif;
+  --sans:  "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* --- Rhythm --- */
+  --maxw: 1140px;
+  --r: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--paper);
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+
+/* --- Helpers --- */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal-600);
+}
+
+.accent { color: var(--teal); }
+
+/* mono micro-label */
+.mono { font-family: var(--mono); }
+
+/* The teal "solution" word, recurring brand signature */
+.sig-solution { color: var(--teal); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  padding: 16px 24px;
+  border-radius: 6px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: var(--ink-900); }
+.btn-teal { background: var(--teal); color: #fff; }
+.btn-teal:hover { background: var(--teal-600); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--mist-700); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* ============================================================
+   THE POINT — the core brand device
+   A ring with a precise center dot. Reused as symbol,
+   favicon, bullet, the "O" in App·O·Site, and icon base.
+   ============================================================ */
+.point { display: inline-block; vertical-align: middle; }
+.point .ring { fill: none; stroke: var(--ink); }
+.point .dot  { fill: var(--teal); }
+
+/* Wordmark */
+.wordmark {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+.lockup-tag {
+  font-family: var(--mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--slate);
+}
