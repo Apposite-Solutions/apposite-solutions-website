@@ -54,8 +54,31 @@ GitHub when a PR is merged — you don't need to write these by hand.
   and produce cleaner preview deployments.
 - Make sure the automated checks (build/preview deployment) pass before merging.
 - Resolve all review conversations before merging.
-- Squash or rebase as needed to keep history readable — avoid noisy "fix typo" commits
-  in the final merged history where possible.
+- **Always squash-merge into `main`.** Each PR becomes a single commit on `main`,
+  titled with a Conventional Commits–style summary (e.g. `feat: add contact form to
+  homepage`). This keeps `main` history linear and readable regardless of how messy
+  the in-progress commits on the branch were. Do not use "Merge commit" or "Rebase
+  and merge" when merging into `main`.
+
+## Documentation currency
+
+Docs are part of the change, not an afterthought — update them in the same PR as the
+code:
+
+- **CHANGELOG.md** — every change that affects external/observable behavior gets an
+  entry under `[Unreleased]`, categorized strictly as `Added`, `Changed`,
+  `Deprecated`, `Removed`, `Fixed`, or `Security`, following
+  [Keep a Changelog](https://keepachangelog.com). Skip purely internal refactors with
+  no surface-level impact. Entries move out of `[Unreleased]` only when a release is
+  explicitly tagged (semantic versioning).
+- **README.md** — update the relevant section whenever you change anything structural:
+  new env vars, config options, CLI flags, the API/page surface, or dependencies. If a
+  section is known to be stale and you're not the one fixing it, call it out explicitly
+  (e.g. a `<!-- TODO: stale -->` note or a mention in the PR) rather than leaving it to
+  silently mislead the next reader.
+- This applies to this project and other standalone Apposite Solutions projects with
+  their own README/CHANGELOG. It does not apply to one-off scripts or quick fixes that
+  don't already have these files.
 
 ## Deployment
 
