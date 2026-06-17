@@ -2,7 +2,6 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
 
 ### Added
 - Google Analytics 4 loaded dynamically from `config.gaId`; production builds

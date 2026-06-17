@@ -35,7 +35,6 @@ jobs:
             // social: {
             //   linkedin: "${{ secrets.LINKEDIN_URL }}",
             // }
-
             gaId: "${GA_ID}",
           };
           JS

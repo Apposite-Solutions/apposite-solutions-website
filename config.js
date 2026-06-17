@@ -28,5 +28,5 @@ window.APPOSITE_CONFIG = {
   // }
 
   // Leave gaId blank ("") to disable Google Analytics (e.g. in preview/dev)
-  gaId: "G-HF2J5DL0FS",
+  gaId: "xxxxxxx",
 };
