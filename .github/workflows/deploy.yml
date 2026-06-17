@@ -18,8 +18,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build config.js from secrets
+        env:
+          # GA is only injected on production (main). Preview builds get an
+          # empty string so analytics traffic is not polluted.
+          GA_ID: ${{ github.ref == 'refs/heads/main' && secrets.GA_MEASUREMENT_ID || '' }}
         run: |
-          cat > config.js <<'JS'
+          cat > config.js <<JS
           window.APPOSITE_CONFIG = {
             company:   "${{ secrets.SITE_COMPANY }}",
             email:     "${{ secrets.CONTACT_EMAIL }}",
@@ -31,6 +35,8 @@ jobs:
             // social: {
             //   linkedin: "${{ secrets.LINKEDIN_URL }}",
             // }
+
+            gaId: "${GA_ID}",
           };
           JS
 
