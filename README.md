@@ -24,6 +24,7 @@ apposite-site/
 ├── config.js               ← edit contact details here
 ├── site.webmanifest        PWA / install metadata
 ├── robots.txt
+├── sitemap.xml              XML sitemap for search engines
 ├── css/
 │   └── brand.css           Design tokens & base styles (the brand template)
 └── assets/
