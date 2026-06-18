@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2026-06-18] SEO Copy Rewrite
+
+### Added
+- JSON-LD structured data (`ProfessionalService`) in `index.html` for rich-snippet eligibility
+- `sitemap.xml` — was referenced in `robots.txt` but missing
+- SEO rewrite report at `work-sessions/seo-report/report.html`
+
+### Changed
+- All homepage copy rewritten: zero jargon, no double-negatives, affirmative framing throughout
+- Meta title, description, OG, and Twitter tags updated with target SEO keywords
+- Nav labels shortened: "Why Us," "Services," "Our Process," "Right Fit"
+- Service card titles now double as keyword phrases (Embedded Systems Engineer, Cloud Infrastructure Management, Cybersecurity Strategy & Hardening)
+- Footer tagline rewritten for long-tail SEO
+- `site.webmanifest` description updated to match new positioning
+
+---
+
 ### Added
 - Google Analytics 4 loaded dynamically from `config.gaId`; production builds
   inject the ID from the `GA_MEASUREMENT_ID` GitHub secret, PR previews receive
